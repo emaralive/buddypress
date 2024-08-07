@@ -1,7 +1,8 @@
 <div align="center">
 	<h1>Official BuddyPress Logo</h1>
 </div>
-<p>Usage of the official BuddyPress logo, e.g., for website or publication, is granted in accordance with the <a href="http://wordpressfoundation.org/trademark-policy/">WordPress trademark policy</a>. The <a href="https://www.exljbris.com/fontin.html">Fontin</a> typeface is used for the official BuddyPress logotype.</p>
+<p>Usage of the official BuddyPress logo, e.g., for website or publication, is granted in accordance with the <a href="http://wordpressfoundation.org/trademark-policy/">WordPress trademark policy</a>. The <a href="https://www.exljbris.com/fontin.html">Fontin</a> typeface is used for the official BuddyPress logotype. BuddyPress related Dashicons 
+can be found at <a href="https://developer.wordpress.org/resource/dashicons/#icons-buddicons">Buddicons.</a></p>
 <div align="center">
 	<table>
 		<tr>
