@@ -1,6 +1,7 @@
 <div align="center">
 	<h1>Official BuddyPress Logo</h1>
 </div>
+<p>The official BuddyPress logo usage, e.g., website or publication, is granted in accordance with the <a href="http://wordpressfoundation.org/trademark-policy/"> WordPress trademark policy.</a></p>
 <div align="center">
 	<table>
 		<tr>
