@@ -23,18 +23,18 @@
 		<tr>
 			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/icon-test-thumb.png">PDF (vector)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PDF (vector)</a>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
 			<td></td>
 			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
 		</tr>
 		<tr>
 			<td><a href="assets/icon-test-thumb.png">SVG (transparent)</a></td>
 			<td></td>
-			<td></td>
-			<td></td>
 			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td></td>
+			<td></td>
 			<td></td>
 			<td></td>
 		</tr>
