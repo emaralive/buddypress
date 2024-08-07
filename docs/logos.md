@@ -41,22 +41,42 @@
 <div align="center">
 	<table>
 		<tr>
-			<td><img src="assets/icon-test-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/bp-light-thumb.png" width="150px" height="150px"></td>
 		  	<td></td>
-			<td><img src="assets/buddypress-logo-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/bp-blue-thumb.png" width="150px" height="150px"></td>
 		</tr>
 			<td align="center"><strong>Wallpaper</strong><br>Light Background</td>
 			<td></td>
 			<td align="center"><strong>Wallpaper</strong><br>Blue Background</td>
 		<tr>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (2880 x 1800)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (2880 x 1800)</a></td>
 		</tr>
 		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (2560 x 1400)</a></td>
 			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (2560 x 1400)</a></td>
+		</tr>
+		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (2038 x 1536)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (2038 x 1536)</a></td>
+		</tr>
+		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (1440 x 900)</a></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (1440 x 900)</a></td>
+		</tr>
+		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (1024 x 768)</a></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (1024 x 768)</a></td>
+		</tr>
+		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (640 x 960)</a></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (640 x 960)</a></td>
 		</tr>
 	</table>
 </div>
