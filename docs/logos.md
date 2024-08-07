@@ -38,6 +38,28 @@
 		</tr>
 	</table>
 </div>
+<div align="center">
+	<table>
+		<tr>
+			<td><img src="assets/icon-test-thumb.png" width="150px" height="150px"></td>
+		  	<td></td>
+			<td><img src="assets/buddypress-logo-thumb.png" width="150px" height="150px"></td>
+		</tr>
+			<td align="center"><strong>Wallpaper</strong><br>Light Background</td>
+			<td></td>
+			<td align="center"><strong>Wallpaper</strong><br>Blue Background</td>
+		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+		</tr>
+	</table>
+</div>
 
 
 
