@@ -1,5 +1,6 @@
-<p>&nbsp;</p>
-
+<div align="center">
+	<h1>Official BuddyPress Logo</h1>
+</div>
 <div align="center">
 	<table>
 		<tr>
