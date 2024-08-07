@@ -5,7 +5,7 @@
 		  	<td></td>
 			<td><img src="assets/buddypress-logo-thumb.png" width="150px" height="150px"></td>
 			<td></td>
-			<td><img src="assets/buddypress-logo-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/wordmark-thumb.png" width="150px" height="150px"></td>
 		</tr>
 			<td align="center"><strong>Logotype</strong><br>Brandmark</td>
 			<td></td>
