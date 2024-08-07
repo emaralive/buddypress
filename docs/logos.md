@@ -16,10 +16,39 @@
 			<td align="center"><strong>Logotype</strong><br>Wordmark</td>
 			<td></td>
 			<td align="center"><strong>Logotype</strong><br>Mascot</td>
+		<tr>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PDF (vector)</a>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td></td>
+			<td></td>
+		</tr>
 	</table>
-
-
 </div>
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
 
 ![](assets/bp-blue-thumb.png)
 
