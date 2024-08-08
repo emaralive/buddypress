@@ -24,7 +24,7 @@ can be found at <a href="https://developer.wordpress.org/resource/dashicons/#ico
 		<tr>
 			<td><a href="assets/bp-brandmark.png">PNG (transparent)</a></td>
 			<td></td>
-			<td><a href="assets/bp-combination.pdf">PDF (vector)</a></td>
+			<td><a href="assets/bp-combination.svg">SVG (vector)</a></td>
 			<td></td>
 			<td><a href="assets/bp-wordmark.png">PNG (transparent)</a></td>
 			<td></td>
