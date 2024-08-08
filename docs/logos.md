@@ -83,27 +83,3 @@ can be found at <a href="https://developer.wordpress.org/resource/dashicons/#ico
 		</tr>
 	</table>
 </div>
-
-
-
-
-
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-
-
-![](assets/bp-blue-thumb.png)
-
-| ![](assets/icon-test-thumb.png) |
-|:----------:|
-| **Logo Type**<br>Standard | 
-
-
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
-![](assets/bp-blue-thumb.png)  |  ![](assets/bp-blue-thumb.png)
