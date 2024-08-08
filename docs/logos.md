@@ -6,13 +6,13 @@ can be found at <a href="https://developer.wordpress.org/resource/dashicons/#ico
 <div align="center">
 	<table>
 		<tr>
-			<td><img src="assets/icon-test-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/bp-brandmark-thumb.png" width="150px" height="150px"></td>
 		  	<td></td>
-			<td><img src="assets/buddypress-logo-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/bp-combination-thumb.png" width="150px" height="150px"></td>
 			<td></td>
-			<td><img src="assets/wordmark-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/bp-wordmark-thumb.png" width="150px" height="150px"></td>
 			<td></td>
-			<td><img src="assets/buddy-wapuu-thumb.png" width="150px" height="150px"></td>
+			<td><img src="assets/bp-mascot-thumb.png" width="150px" height="150px"></td>
 		</tr>
 			<td align="center"><strong>Logotype</strong><br>Brandmark</td>
 			<td></td>
@@ -22,22 +22,22 @@ can be found at <a href="https://developer.wordpress.org/resource/dashicons/#ico
 			<td></td>
 			<td align="center"><strong>Logotype</strong><br>Mascot</td>
 		<tr>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/bp-brandmark.png">PNG (transparent)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PDF (vector)</a></td>
+			<td><a href="assets/bp-combination.pdf">PDF (vector)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/bp-wordmark.png">PNG (transparent)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
+			<td><a href="assets/bp-mascot.png">PNG (transparent)</a></td>
 		</tr>
 		<tr>
-			<td><a href="assets/icon-test-thumb.png">SVG (transparent)</a></td>
+			<td><a href="assets/bp-brandmark.svg">SVG (transparent)</a></td>
 			<td></td>
-			<td><a href="assets/icon-test-thumb.png">PNG (transparent)</a></td>
-			<td></td>
-			<td></td>
+			<td><a href="assets/bp-combination.png">PNG (transparent)</a></td>
 			<td></td>
 			<td></td>
+			<td></td>
+			<td><a href="assets/bp-mascot.svg">SVG (transparent)</a</td>
 		</tr>
 	</table>
 </div>
