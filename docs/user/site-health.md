@@ -6,7 +6,7 @@ BuddyPress, currently, adds 2 (two) accordian panels to the **Site Health Info**
 1. BuddyPress
 2. BuddyPress Constants
    
-![site health screen](assets/site-health-screen.png)
+![site health screen example](assets/site-health-screen.png)
 An example of the **Site Health** screen
 
 ### (1) BuddyPress
