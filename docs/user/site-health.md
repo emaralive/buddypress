@@ -14,7 +14,7 @@ This panel contains details about your BuddyPress configuration depending upon w
 
 ![site health - BuddyPress panel](assets/shs-buddypress-panel.png)
 
-The image above is an example of a expanded BuddyPress panel with minimum components enabled. Below is the full list of attributes when all components are enabled.
+The image above is an example of a expanded BuddyPress panel with minimum components enabled. Below is the full list of attributes and the component associated with each configurable attribute.
 
 | Attribute | Description | Component |
 |:-------|:--------|:-------|
