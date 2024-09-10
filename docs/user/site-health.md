@@ -24,6 +24,11 @@ This panel contains details about your BuddyPress configuration depending upon w
 | Members: Cover Image Uploads | Indicates whether registered members are allowed to upload cover images. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
 | Members: Invitations | Indicates whether registered members are allowed to nvite people to join the network. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
 | Members: Membership Requests | Indicates whether visitors are allowed to request site membership. If enabled, an administrator must approve each new site membership request. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
+| Extended Profiles: Profile Syncing | Indicates whether BuddyPress to WordPress profile syncing is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Extended Profiles |
+| User Groups: Group Creation | Indicates whether group creation for all users is allowed. Administrators can always create groups, regardless of this setting. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
+| User Groups: Group Photo Uploads | Indicates whether customizable avatars for groups is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
+| User Groups: Group Cover Image Uploads | Indicates whether customizable cover images for groups is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
+| User Groups: Group Activity Deletions | Indicates whether group administrators and moderators to delete activity items from their group's activity stream is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
 
 
 
