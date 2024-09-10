@@ -11,6 +11,12 @@ An example of the **Site Health** screen
 
 ### (1) BuddyPress
 This panel contains details about your BuddyPress configuration depending upon which components are enabled.
-
+| Attribute | Description | Component |
+|:-------|:--------|:-------|
+| Version | The installed version of BuddyPress. | |
+| Active components | A list of active components. | |
+| URL Parser | Indicates which URL Parser is in use. Default  | |
+| Community visibility | Indicates whether the BuddyPress community is public or private. | BuddyPress Core |
+| Active template pack | Indicates which BuddyPress template pack is in use. | BuddyPress Core |
 ### (2) BuddyPress Constants
 
