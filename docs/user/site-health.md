@@ -2,7 +2,7 @@
 > [!TIP]
 > Detailed information regarding the **Site Health** screen can be found at [Support guides/Dashboard/Site Health screen](https://wordpress.org/documentation/article/site-health-screen/)
 
-BuddyPress, currently, adds 2 (two) accordian panels to the **Site Health Info** tab:
+BuddyPress, currently, adds 2 (two) accordion panels to the **Site Health Info** tab:
 1. **BuddyPress**
 2. **BuddyPress Constants**
    
@@ -23,11 +23,11 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 | URL Parser | Indicates which URL Parser is in use. The default is **BP Rewrites API**. Can be changed to the **Legacy Parser** by installing the [BP Classic](https://wordpress.org/plugins/bp-classic/) add-on. | |
 | Community visibility | Indicates whether the BuddyPress community is public (**Anyone**) or private (**Members Only**). The Default is public (**Anyone**). Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
 | Active template pack | Indicates which BuddyPress template pack is in use. The Default is **BuddyPress Nouveau**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
-| Toolbar | Indicates whether the WordPress **Toolbar** is shown on the frnnt-end for **logged out** users. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. See [Toolbar](https://wordpress.org/documentation/article/toolbar/) for additional information. | BuddyPress Core |
+| Toolbar | Indicates whether the WordPress **Toolbar** is shown on the front-end for **logged out** users. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. See [Toolbar](https://wordpress.org/documentation/article/toolbar/) for additional information. | BuddyPress Core |
 | Account Deletion | Indicates whether registered members are allowed to delete their own accounts. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Account Settings |
 | Members: Profile Photo Uploads | Indicates whether registered members are allowed to upload avatars. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
 | Members: Cover Image Uploads | Indicates whether registered members are allowed to upload cover images. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
-| Members: Invitations | Indicates whether registered members are allowed to nvite people to join the network. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
+| Members: Invitations | Indicates whether registered members are allowed to invite people to join the network. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
 | Members: Membership Requests | Indicates whether visitors are allowed to request site membership. If enabled, an administrator must approve each new site membership request. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. ***Note**: The "**Anyone can register**" checkbox must be **disabled** in order to **enable** this feature (see [General Settings - Membership](https://wordpress.org/documentation/article/settings-general-screen/#membership) for where to **enable** or **disable** the  "**Anyone can register**" checkbox)* | Community Members |
 | Extended Profiles: Profile Syncing | Indicates whether BuddyPress to WordPress profile syncing is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Extended Profiles |
 | User Groups: Group Creation | Indicates whether group creation for all users is allowed. Administrators can always create groups, regardless of this setting. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
@@ -44,4 +44,3 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 
 
 ### (2) BuddyPress Constants
-
