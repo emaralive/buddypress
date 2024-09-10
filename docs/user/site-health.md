@@ -29,6 +29,8 @@ This panel contains details about your BuddyPress configuration depending upon w
 | User Groups: Group Photo Uploads | Indicates whether customizable avatars for groups is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
 | User Groups: Group Cover Image Uploads | Indicates whether customizable cover images for groups is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
 | User Groups: Group Activity Deletions | Indicates whether group administrators and moderators to delete activity items from their group's activity stream is allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | User Groups |
+| Activity Streams: Post Comments | Indicates whether activity stream commenting on posts and comments is allowed. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. ***Note**: The Site Tracking component must be active in order to enable this feature*. |Activity Streams & Site Tracking |
+| Activity Streams: Activity auto-refresh | Indicates whether a check for new items while viewing the activity stream is automatically allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. |Activity Streams |
 
 
 
