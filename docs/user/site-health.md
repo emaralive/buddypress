@@ -11,6 +11,11 @@ An example of the **Site Health** screen
 
 ### (1) BuddyPress
 This panel contains details about your BuddyPress configuration depending upon which components are enabled.
+
+![site health - BuddyPress panel](assets/shs-buddypress-panel.png)
+
+The image above is an example of a expanded BuddyPress panel with minimum components enabled. Below is the full list of attributes when all components are enabled.
+
 | Attribute | Description | Component |
 |:-------|:--------|:-------|
 | Version | The installed version of BuddyPress. | |
