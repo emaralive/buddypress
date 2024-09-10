@@ -14,9 +14,10 @@ This panel contains details about your BuddyPress configuration depending upon w
 | Attribute | Description | Component |
 |:-------|:--------|:-------|
 | Version | The installed version of BuddyPress. | |
-| Active components | A list of active components. | |
-| URL Parser | Indicates which URL Parser is in use. Default  | |
-| Community visibility | Indicates whether the BuddyPress community is public or private. | BuddyPress Core |
-| Active template pack | Indicates which BuddyPress template pack is in use. | BuddyPress Core |
+| Active components | A list of active components. The defaults are **BuddyPress Core**, **Community Members**, **Extended Profiles**, **Account Settings**, **Activity Streams** & **Notifications**. Configurable from [BuddyPress Components settings](administration/settings/components.md) screen, with the exceptions of **BuddyPress Core** & **Community Members** which are **Must-Use** components. | |
+| URL Parser | Indicates which URL Parser is in use. The default is **BP Rewrites API**. Can be changed to the **Legacy Parser** by installing the [BP Classic](https://wordpress.org/plugins/bp-classic/) add-on. | |
+| Community visibility | Indicates whether the BuddyPress community is public (**Anyone**) or private (**Members Only**). The Default is public (**Anyone**). Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
+| Active template pack | Indicates which BuddyPress template pack is in use. The Default is **BuddyPress Nouveau**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
+
 ### (2) BuddyPress Constants
 
