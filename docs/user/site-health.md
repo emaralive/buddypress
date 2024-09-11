@@ -16,13 +16,17 @@ This panel contains details about your BuddyPress configuration depending upon w
 
 The image above is an example of a expanded BuddyPress panel with minimum components enabled. Below is the full list of attributes and the component associated with each configurable attribute.
 
+> [!NOTE]
+> The **\*** (asterisk) indicates whether the **BuddyPress standalone theme** or the **Active template pack** attribute will be shown (not both). If no **BuddyPress standalone theme** is detected, then the fallback is to show the **Active template pack** attribute.
+
 | Attribute | Description | Component |
 |:-------|:--------|:-------|
 | Version | The installed version of BuddyPress. | BuddyPress Core |
 | Active components | A list of active components. The defaults are **BuddyPress Core**, **Community Members**, **Extended Profiles**, **Account Settings**, **Activity Streams** & **Notifications**. Configurable from [BuddyPress Components](administration/settings/components.md) screen, with the exceptions of **BuddyPress Core** & **Community Members** which are **Must-Use** components. | BuddyPress Core |
 | URL Parser | Indicates which URL Parser is in use. The default is **BP Rewrites API**. Can be changed to the **Legacy Parser** by installing the [BP Classic](https://wordpress.org/plugins/bp-classic/) add-on. | BuddyPress Core |
 | Community visibility | Indicates whether the BuddyPress community is public (**Anyone**) or private (**Members Only**). The Default is public (**Anyone**). Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
-| Active template pack | Indicates which BuddyPress template pack is in use. The Default is **BuddyPress Nouveau**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
+| BuddyPress standalone theme\* | Indicates which BuddyPress standalone theme is in use. | BuddyPress Core |
+| Active template pack\* | Indicates which BuddyPress template pack is in use. The Default is **BuddyPress Nouveau**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | BuddyPress Core |
 | Toolbar | Indicates whether the WordPress **Toolbar** is shown on the front-end for **logged out** users. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. See [Toolbar](https://wordpress.org/documentation/article/toolbar/) for additional information. | BuddyPress Core |
 | Account Deletion | Indicates whether registered members are allowed to delete their own accounts. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Account Settings |
 | Members: Profile Photo Uploads | Indicates whether registered members are allowed to upload avatars. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md) screen. | Community Members |
