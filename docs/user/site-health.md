@@ -44,13 +44,8 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 | Activity Streams: Post Comments | Indicates whether activity stream commenting on posts and comments is allowed. The Default is **disabled**. Configurable from the [BuddyPress Options](administration/settings/options.md#post-comments) screen. ***Note**: The Site Tracking component must be **active** in order to **enable** this feature*. |Activity Streams & Site Tracking |
 | Activity Streams: Activity auto-refresh | Indicates whether a check for new items while viewing the activity stream is automatically allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md#activity-auto-refresh) screen. |Activity Streams |
 
-
-
-
-
-
-
 ### (2) BuddyPress Constants
+
 | Constant | Default Value |
 | :------- | :------------ |
 | BP_VERSION | The installed version of BuddyPress. |
@@ -64,8 +59,8 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 | BP_ENABLE_MULTIBLOG | undefined |
 | BP_ENABLE_ROOT_PROFILES | undefined |
 | BP_DEFAULT_COMPONENT | undefined |
-| BP_XPROFILE_BASE_GROUP_NAME | If **Extended Profiles** component is active this value will be the default avatar setting |
-| BP_XPROFILE_FULLNAME_FIELD_NAME | If **Extended Profiles** component is active this value will be the primary xprofile field label |
+| BP_XPROFILE_BASE_GROUP_NAME | If **Extended Profiles** component is active this value will be the default avatar setting as selected per the [Settings Discussion](https://wordpress.org/documentation/article/settings-discussion-screen/#avatars) screen. Otherwise, the value is undefined.  |
+| BP_XPROFILE_FULLNAME_FIELD_NAME | If **Extended Profiles** component is active this value will be the primary xprofile field label (see [BuddyPress xProfile fields administration](administration/users/xprofile.md)). Otherwise, the value is undefined. |
 | BP_MESSAGES_AUTOCOMPLETE_ALL | undefined |
 | BP_DISABLE_AUTO_GROUP_JOIN | undefined |
 | BP_GROUPS_DEFAULT_EXTENSION | undefined |
