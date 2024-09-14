@@ -1,8 +1,11 @@
 # Site Health Screen
 > [!TIP]
-> Detailed information regarding the **Site Health** screen can be found at [Support guides/Dashboard/Site Health screen](https://wordpress.org/documentation/article/site-health-screen/)
+> Detailed information regarding the **Site Health** screen can be found at [Support guides/Dashboard/Site Health screen](https://wordpress.org/documentation/article/site-health-screen/).
 
-BuddyPress, currently, adds 2 (two) accordion panels to the **Site Health Info** tab:
+BuddyPress, currently, adds 2 (two) accordion panels to the **[Site Health Info](https://wordpress.org/documentation/article/site-health-screen/#info)** tab:
+> [!NOTE]
+> This information may be instrumental in resolving site issues while communicating with support personnel, e.g., use the **Copy site info to clipboard** button and paste any relevant information to augment your support request.
+
 1. **BuddyPress**
 2. **BuddyPress Constants**
    
