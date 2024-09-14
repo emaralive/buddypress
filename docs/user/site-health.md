@@ -51,3 +51,52 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 
 
 ### (2) BuddyPress Constants
+| Constant | Default Value |
+| :------- | :------------ |
+| BP_VERSION | The installed version of BuddyPress. |
+| BP_DB_VERSION | The installed database version of BuddyPress. |
+| BP_REQUIRED_PHP_VERSION | The minimum supported PHP version. |
+| BP_PLUGIN_DIR | The filesystem directory path (with trailing slash) for the BuddyPress plugin. |
+| BP_PLUGIN_URL | The URL directory path (with trailing slash) for the BuddyPress plugin. |
+| BP_IGNORE_DEPRECATED | undefined |
+| BP_LOAD_DEPRECATED | undefined |
+| BP_ROOT_BLOG | 1 (integer) |
+| BP_ENABLE_MULTIBLOG | undefined |
+| BP_ENABLE_ROOT_PROFILES | undefined |
+| BP_DEFAULT_COMPONENT | undefined |
+| BP_XPROFILE_BASE_GROUP_NAME | If **Extended Profiles** component is active this value will be the default avatar setting |
+| BP_XPROFILE_FULLNAME_FIELD_NAME | If **Extended Profiles** component is active this value will be the primary xprofile field label |
+| BP_MESSAGES_AUTOCOMPLETE_ALL | undefined |
+| BP_DISABLE_AUTO_GROUP_JOIN | undefined |
+| BP_GROUPS_DEFAULT_EXTENSION | undefined |
+| BP_SIGNUPS_SKIP_USER_CREATION | undefined |
+| BP_MEMBERS_REQUIRED_PASSWORD_STRENGTH | undefined |
+| BP_EMBED_DISABLE_PRIVATE_MESSAGES | undefined |
+| BP_EMBED_DISABLE_ACTIVITY_REPLIES | undefined |
+| BP_ENABLE_USERNAME_COMPATIBILITY_MODE | undefined |
+| BP_AVATAR_DEFAULT_THUMB | undefined |
+| BP_AVATAR_DEFAULT | undefined |
+| BP_AVATAR_URL | The URL directory path for Avatar uploads. |
+| BP_AVATAR_UPLOAD_PATH | The filesystem directory path for Avatar uploads. |
+| BP_SHOW_AVATARS | 1 (integer) |
+| BP_AVATAR_ORIGINAL_MAX_WIDTH | 450 (pixels) |
+| BP_AVATAR_ORIGINAL_MAX_FILESIZE | 5120000 (bits) |
+| BP_AVATAR_FULL_HEIGHT | 150 (pixels) |
+| BP_AVATAR_FULL_WIDTH | 150 (pixels) |
+| BP_AVATAR_THUMB_HEIGHT | 50 (pixels) |
+| BP_AVATAR_THUMB_WIDTH | 50 (pixels) |
+| BP_USE_WP_ADMIN_BAR | undefined |
+| BP_FRIENDS_DB_VERSION | undefined |
+| BP_FORUMS_PARENT_FORUM_ID | 1 (integer) |
+| BP_MEMBERS_SLUG | undefined |
+| BP_GROUPS_SLUG | undefined |
+| BP_MESSAGES_SLUG | undefined |
+| BP_NOTIFICATIONS_SLUG | undefined |
+| BP_BLOGS_SLUG | undefined |
+| BP_FRIENDS_SLUG | undefined |
+| BP_ACTIVITY_SLUG | undefined |
+| BP_SETTINGS_SLUG | undefined |
+| BP_XPROFILE_SLUG | undefined |
+| BP_FORUMS_SLUG | forums (string)                                                                                      |
+| BP_SEARCH_SLUG | search (string) |
+
