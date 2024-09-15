@@ -64,7 +64,7 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 | BP_MESSAGES_AUTOCOMPLETE_ALL | undefined |
 | BP_DISABLE_AUTO_GROUP_JOIN | undefined |
 | BP_GROUPS_DEFAULT_EXTENSION | undefined |
-| BP_SIGNUPS_SKIP_USER_CREATION | undefined |
+| BP_SIGNUPS_SKIP_USER_CREATION[^1] | undefined |
 | BP_MEMBERS_REQUIRED_PASSWORD_STRENGTH | undefined |
 | BP_EMBED_DISABLE_PRIVATE_MESSAGES | undefined |
 | BP_EMBED_DISABLE_ACTIVITY_REPLIES | undefined |
@@ -80,18 +80,19 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 | BP_AVATAR_FULL_WIDTH | 150 (pixels) |
 | BP_AVATAR_THUMB_HEIGHT | 50 (pixels) |
 | BP_AVATAR_THUMB_WIDTH | 50 (pixels) |
-| BP_USE_WP_ADMIN_BAR | undefined |
-| BP_FRIENDS_DB_VERSION | undefined |
+| BP_USE_WP_ADMIN_BAR[^1] | undefined |
+| BP_FRIENDS_DB_VERSION[^1] | undefined |
 | BP_FORUMS_PARENT_FORUM_ID | 1 (integer) |
-| BP_MEMBERS_SLUG | undefined |
-| BP_GROUPS_SLUG | undefined |
-| BP_MESSAGES_SLUG | undefined |
-| BP_NOTIFICATIONS_SLUG | undefined |
-| BP_BLOGS_SLUG | undefined |
-| BP_FRIENDS_SLUG | undefined |
-| BP_ACTIVITY_SLUG | undefined |
-| BP_SETTINGS_SLUG | undefined |
-| BP_XPROFILE_SLUG | undefined |
+| BP_MEMBERS_SLUG[^1] | undefined |
+| BP_GROUPS_SLUG[^1] | undefined |
+| BP_MESSAGES_SLUG[^1] | undefined |
+| BP_NOTIFICATIONS_SLUG[^1] | undefined |
+| BP_BLOGS_SLUG[^1] | undefined |
+| BP_FRIENDS_SLUG[^1] | undefined |
+| BP_ACTIVITY_SLUG[^1] | undefined |
+| BP_SETTINGS_SLUG[^1] | undefined |
+| BP_XPROFILE_SLUG[^1] | undefined |
 | BP_FORUMS_SLUG | forums (string)                                                                                      |
 | BP_SEARCH_SLUG | search (string) |
-
+### Footnotes
+[^1]: Deprecated, a "**doing it wrong**" error notice is cast.
