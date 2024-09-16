@@ -48,7 +48,7 @@ The image above is an example of an expanded BuddyPress panel with minimum compo
 > [!Note]
 > *A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). Constants are case-sensitive. By convention, constant identifiers are always uppercase*. [PHP Manual - Constants](https://www.php.net/manual/en/language.constants.php)
 
-Some of these Constants are user-definable and will alter the default behavior of BuddyPress. This list is made available for your purvey in the event a misdefined Constant may be causing unexpected behavior.
+Some of these Constants are user-definable and will alter the behavior of BuddyPress when the defaults are overridden. This list is made available for your purvey in the event a misdefined Constant may be causing unexpected behavior.
 
 | Constant | Default Value |
 | :------- | :------------ |
