@@ -6,8 +6,8 @@ BuddyPress, currently, adds 2 (two) accordion panels to the **[Site Health Info]
 > [!NOTE]
 > This information may prove instrumental in resolving site issues while communicating with support personnel, e.g., use the **Copy site info to clipboard** button and paste any relevant information to augment your support request.
 
-1. **BuddyPress**
-2. **BuddyPress Constants**
+1. **[BuddyPress](site-health.md#1-buddypress)**
+2. **[BuddyPress Constants](site-health.md#2-buddypress-constants)**
    
 ![site health screen example](assets/site-health-screen.png)
 An example of the **Site Health** screen
