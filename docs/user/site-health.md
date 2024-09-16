@@ -17,7 +17,7 @@ This panel contains details about your BuddyPress configuration depending upon w
 
 ![site health - BuddyPress panel](assets/shs-buddypress-panel-02.png)
 
-The image above is an example of a expanded BuddyPress panel with minimum components enabled. Below is the full list of attributes and the component associated with each configurable attribute.
+The image above is an example of an expanded BuddyPress panel with minimum components enabled. Below is the full list of attributes and the component associated with each configurable attribute.
 
 > [!NOTE]
 > The **\*** (asterisk) indicates whether the **BuddyPress standalone theme** or the **Active template pack** attribute will be shown (not both). If no **BuddyPress standalone theme** is detected, then the fallback is to show the **Active template pack** attribute.
@@ -45,6 +45,10 @@ The image above is an example of a expanded BuddyPress panel with minimum compon
 | Activity Streams: Activity auto-refresh | Indicates whether a check for new items while viewing the activity stream is automatically allowed. The Default is **enabled**. Configurable from the [BuddyPress Options](administration/settings/options.md#activity-auto-refresh) screen. |Activity Streams |
 
 ### (2) BuddyPress Constants
+> [!Note]
+> *A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). Constants are case-sensitive. By convention, constant identifiers are always uppercase*. [PHP Manual - Constants](https://www.php.net/manual/en/language.constants.php)
+
+Some of these Constants are user-definable and will alter the default behavior of BuddyPress. This list is made available for your purvey in the event a misdefined Constant may be causing unexpected behavior.
 
 | Constant | Default Value |
 | :------- | :------------ |
