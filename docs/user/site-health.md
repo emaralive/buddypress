@@ -50,7 +50,7 @@ The image above is an example of an expanded BuddyPress panel with minimum compo
 
 Some of these Constants are user-definable and will alter the behavior of BuddyPress when the defaults are overridden. This list is made available for your purvey in the event a misdefined Constant may be causing unexpected behavior.
 
-]Add screenshot (partial image for an example) of BuddyPress Constants panel - somewhere around here or before the paragraph above]
+**[Add screenshot (partial image for an example) of BuddyPress Constants panel - somewhere around here or before the paragraph above]**
 
 | Constant | Default Value |
 | :------- | :------------ |
