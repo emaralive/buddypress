@@ -21,6 +21,8 @@ The image above is an example of an expanded BuddyPress panel with minimum compo
 
 > [!NOTE]
 > The **\*** (asterisk) indicates whether the **BuddyPress standalone theme** or the **Active template pack** attribute will be shown (not both). If no **BuddyPress standalone theme** is detected, then the fallback is to show the **Active template pack** attribute.
+>
+> Additionally, plugins may add **optional components** to the list of **Active components** attribute and/or add additional attributes.
 
 | Attribute | Description | Component |
 |:-------|:--------|:-------|
