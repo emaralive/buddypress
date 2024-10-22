@@ -128,7 +128,11 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 
 		// Include the meta_query for starred messages.
 		if ( 'starred' === $args['box'] ) {
+<<<<<<< HEAD
 			$args['meta_query'] = array(
+=======
+			$args['meta_query'] = array( // phpcs:ignore
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 				array(
 					'key'   => 'starred_by_user',
 					'value' => $args['user_id'],
@@ -151,8 +155,11 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 
 		$retval = array();
 		foreach ( (array) $messages_box->threads as $thread ) {
+<<<<<<< HEAD
 			$messages_box->the_message_thread();
 
+=======
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 			$retval[] = $this->prepare_response_for_collection(
 				$this->prepare_item_for_response( $thread, $request )
 			);
@@ -162,11 +169,19 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 		$response = bp_rest_response_add_total_headers( $response, $messages_box->total_thread_count, $args['per_page'] );
 
 		/**
+<<<<<<< HEAD
 		 * Fires after threads are fetched via the REST API.
 		 *
 		 * @since 15.0.0
 		 *
 		 * @param BP_Messages_Box_Template  $messages_box Messages box
+=======
+		 * Fires after a thread is fetched via the REST API.
+		 *
+		 * @since 15.0.0
+		 *
+		 * @param BP_Messages_Box_Template  $messages_box Fetched thread.
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 		 * @param WP_REST_Response          $response     The response data.
 		 * @param WP_REST_Request           $request      The request sent to the API.
 		 */
@@ -341,6 +356,7 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response|WP_Error
 	 */
 	public function create_item( $request ) {
+<<<<<<< HEAD
 		$create_args = $this->prepare_item_for_database( $request );
 
 		// Let's return the original error if possible.
@@ -355,6 +371,19 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 				'bp_rest_messages_create_failed',
 				$thread_id->get_error_message(),
 				array( 'status' => 500 )
+=======
+		// Create the message or the reply.
+		$thread_id = messages_new_message( $this->prepare_item_for_database( $request ) );
+
+		// Validate it created a Thread or was added to it.
+		if ( false === $thread_id ) {
+			return new WP_Error(
+				'bp_rest_messages_create_failed',
+				__( 'There was an error trying to create the message.', 'buddypress' ),
+				array(
+					'status' => 500,
+				)
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 			);
 		}
 
@@ -473,7 +502,11 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 			messages_mark_thread_unread( $thread->thread_id, $updated_user_id );
 		}
 
+<<<<<<< HEAD
 		// By default, use the last message.
+=======
+		// By default use the last message.
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 		$message_id = $thread->last_message_id;
 		if ( $request->get_param( 'message_id' ) ) {
 			$message_id = $request->get_param( 'message_id' );
@@ -784,10 +817,17 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 			$prepared_thread->sender_id = bp_loggedin_user_id();
 		}
 
+<<<<<<< HEAD
 		if ( ! empty( $thread->message ) ) {
 			$prepared_thread->message = $thread->message;
 		} elseif ( ! empty( $schema['properties']['message'] ) ) {
 			$prepared_thread->content = $request->get_param( 'message' );
+=======
+		if ( ! empty( $schema['properties']['message'] ) && ! empty( $request->get_param( 'message' ) ) ) {
+			$prepared_thread->content = $request->get_param( 'message' );
+		} elseif ( ! empty( $thread->message ) ) {
+			$prepared_thread->message = $thread->message;
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 		}
 
 		if ( ! empty( $schema['properties']['subject'] ) && ! empty( $request->get_param( 'subject' ) ) ) {
@@ -830,6 +870,7 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 			: $message->message;
 
 		$data = array(
+<<<<<<< HEAD
 			'id'            => (int) $message->id,
 			'thread_id'     => (int) $message->thread_id,
 			'sender_id'     => (int) $message->sender_id,
@@ -843,6 +884,20 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 			),
 			'date_sent'     => bp_rest_prepare_date_response( $message->date_sent, get_date_from_gmt( $message->date_sent ) ),
 			'date_sent_gmt' => bp_rest_prepare_date_response( $message->date_sent ),
+=======
+			'id'        => (int) $message->id,
+			'thread_id' => (int) $message->thread_id,
+			'sender_id' => (int) $message->sender_id,
+			'subject'   => array(
+				'raw'      => $message->subject,
+				'rendered' => apply_filters( 'bp_get_message_thread_subject', $message->subject ),
+			),
+			'message'   => array(
+				'raw'      => $message->message,
+				'rendered' => apply_filters( 'bp_get_the_thread_message_content', $content ),
+			),
+			'date_sent' => bp_rest_prepare_date_response( $message->date_sent ),
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 		);
 
 		if ( bp_is_active( 'messages', 'star' ) ) {
@@ -971,16 +1026,28 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 				'rendered' => apply_filters( 'bp_get_message_thread_subject', $thread->last_message_subject ),
 			),
 			'excerpt'        => array(
+<<<<<<< HEAD
 				'raw'      => $excerpt,
 				'rendered' => apply_filters( 'bp_get_message_thread_excerpt', $excerpt ),
 			),
 			'message'        => array(
 				'raw'      => $content,
+=======
+				'raw'      => $raw_excerpt,
+				'rendered' => apply_filters( 'bp_get_message_thread_excerpt', $excerpt ),
+			),
+			'message'        => array(
+				'raw'      => $thread->last_message_content,
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 				'rendered' => apply_filters( 'bp_get_the_thread_message_content', $content ),
 			),
 			'date'           => bp_rest_prepare_date_response( $thread->last_message_date, get_date_from_gmt( $thread->last_message_date ) ),
 			'date_gmt'       => bp_rest_prepare_date_response( $thread->last_message_date ),
+<<<<<<< HEAD
 			'unread_count'   => (int) $thread->unread_count,
+=======
+			'unread_count'   => ! empty( $thread->unread_count ) ? absint( $thread->unread_count ) : 0,
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 			'sender_ids'     => wp_parse_id_list( array_values( $thread->sender_ids ) ),
 			'recipients'     => array(),
 			'messages'       => array(),
@@ -1044,11 +1111,18 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 
 		// Add star links for each message of the thread.
 		if ( is_user_logged_in() && bp_is_active( 'messages', 'star' ) ) {
+<<<<<<< HEAD
 			$starred_base              = $base . bp_get_messages_starred_slug() . '/';
 			$links['starred-messages'] = array();
 
 			foreach ( $thread->messages as $message ) {
 				$links['star-messages'][ $message->id ] = array(
+=======
+			$starred_base = $base . bp_get_messages_starred_slug() . '/';
+
+			foreach ( $thread->messages as $message ) {
+				$links[ $message->id ] = array(
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 					'href' => rest_url( $starred_base . $message->id ),
 				);
 			}
@@ -1409,6 +1483,7 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 						'description' => __( 'The list of recipient User Objects involved into the Thread.', 'buddypress' ),
 						'type'        => 'array',
 						'items'       => array(
+<<<<<<< HEAD
 							'type' => 'object',
 						),
 					),
@@ -1418,6 +1493,8 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 						'readonly'    => true,
 						'type'        => 'array',
 						'items'       => array(
+=======
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 							'type'       => 'object',
 							'properties' => array(
 								'id'           => array(
@@ -1471,6 +1548,18 @@ class BP_Messages_REST_Controller extends WP_REST_Controller {
 							),
 						),
 					),
+<<<<<<< HEAD
+=======
+					'messages'            => array(
+						'context'     => array( 'view', 'edit' ),
+						'description' => __( 'List of message objects for the thread.', 'buddypress' ),
+						'readonly'    => true,
+						'type'        => 'array',
+						'items'       => array(
+							'type' => 'object',
+						),
+					),
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 					'starred_message_ids' => array(
 						'context'     => array( 'view', 'edit' ),
 						'description' => __( 'List of starred message IDs.', 'buddypress' ),

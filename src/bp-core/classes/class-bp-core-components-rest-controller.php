@@ -310,6 +310,10 @@ class BP_Core_Components_REST_Controller extends WP_REST_Controller {
 	 * Verify Component Status.
 	 *
 	 * @since 15.0.0
+<<<<<<< HEAD
+=======
+	 * @since 15.0.0
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 	 *
 	 * @param string $name        Component name.
 	 * @param string $return_type Use `string` to get the l10n string. Default.
@@ -396,6 +400,10 @@ class BP_Core_Components_REST_Controller extends WP_REST_Controller {
 	 * Get component info helper.
 	 *
 	 * @since 15.0.0
+<<<<<<< HEAD
+=======
+	 * @since 15.0.0
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 	 *
 	 * @param string $component Component id.
 	 * @return array
@@ -431,7 +439,11 @@ class BP_Core_Components_REST_Controller extends WP_REST_Controller {
 			'is_active'   => $status['bool'],
 			'title'       => $data['title'],
 			'description' => $data['description'],
+<<<<<<< HEAD
 			'features'    => null,
+=======
+			'features'    => array(),
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 		);
 
 		// Set component's features.
@@ -475,7 +487,11 @@ class BP_Core_Components_REST_Controller extends WP_REST_Controller {
 					);
 					break;
 				default:
+<<<<<<< HEAD
 					$features = null;
+=======
+					$features = array();
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 					break;
 			}
 
@@ -552,11 +568,18 @@ class BP_Core_Components_REST_Controller extends WP_REST_Controller {
 						'type'        => 'string',
 					),
 					'features'    => array(
+<<<<<<< HEAD
 						'context'     => array( 'view', 'edit' ),
 						'description' => __( 'Information about active features for the component.', 'buddypress' ),
 						'type'        => array( 'object', 'null' ),
 						'properties'  => array(),
 						'default'     => null,
+=======
+						'description' => __( 'Information about active features for the component.', 'buddypress' ),
+						'type'        => 'array',
+						'context'     => array( 'view', 'edit' ),
+						'default'     => array(),
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 					),
 				),
 			);

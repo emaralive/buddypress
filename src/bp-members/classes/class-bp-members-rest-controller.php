@@ -243,9 +243,16 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 			$member_query = new BP_User_Query( $args );
 			$member       = reset( $member_query->results );
 
+<<<<<<< HEAD
 			$member = $this->prepare_item_for_response( $member, $request );
 
 			return rest_ensure_response( $member );
+=======
+			$member   = $this->prepare_item_for_response( $member, $request );
+			$response = rest_ensure_response( $member );
+
+			return $response;
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 		}
 
 		return parent::get_item( $request );
@@ -256,7 +263,11 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 	 *
 	 * @since 15.0.0
 	 *
+<<<<<<< HEAD
 	 * @param WP_REST_Request $request Full details about the request.
+=======
+	 * @param  WP_REST_Request $request Full details about the request.
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 	 * @return true|WP_Error
 	 */
 	public function get_item_permissions_check( $request ) {
@@ -279,6 +290,7 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 						'status' => 404,
 					)
 				);
+<<<<<<< HEAD
 			} elseif ( get_current_user_id() === $user->ID && ! bp_is_user_spammer( $user->ID ) ) {
 				$retval = true;
 			} elseif ( 'edit' === $request->get_param( 'context' ) && ! bp_current_user_can( 'list_users' ) ) {
@@ -288,6 +300,21 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 					array( 'status' => rest_authorization_required_code() )
 				);
 			} elseif ( bp_current_user_can( 'bp_moderate' ) || ! bp_is_user_spammer( $user->ID ) ) {
+=======
+			} elseif ( 'edit' === $request->get_param( 'context' ) ) {
+				if ( get_current_user_id() === $user->ID || bp_current_user_can( 'list_users' ) ) {
+					$retval = true;
+				} else {
+					$retval = new WP_Error(
+						'bp_rest_authorization_required',
+						__( 'Sorry, you are not allowed to view members with the edit context.', 'buddypress' ),
+						array(
+							'status' => rest_authorization_required_code(),
+						)
+					);
+				}
+			} else {
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 				$retval = true;
 			}
 		}
@@ -417,6 +444,10 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 	 * Checks if a given request has access to delete the current user.
 	 *
 	 * @since 15.0.0
+<<<<<<< HEAD
+=======
+	 * @since 15.0.0
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return true|WP_Error True if the request has access to delete the item, WP_Error object otherwise.
@@ -449,6 +480,10 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 	 * Deletes the current user.
 	 *
 	 * @since 15.0.0
+<<<<<<< HEAD
+=======
+	 * @since 15.0.0
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
@@ -608,6 +643,10 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 	 * This was abstracted to be used in other BuddyPress endpoints.
 	 *
 	 * @since 15.0.0
+<<<<<<< HEAD
+=======
+	 * @since 15.0.0
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 	 *
 	 * @param WP_User         $user    User object.
 	 * @param string          $context The context of the request. Defaults to 'view'.
@@ -1118,6 +1157,10 @@ class BP_Members_REST_Controller extends WP_REST_Users_Controller {
 								'format'      => 'date-time',
 							),
 						),
+<<<<<<< HEAD
+=======
+						'format'      => 'date-time',
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 						'context'     => array( 'view', 'edit' ),
 						'readonly'    => true,
 					),

@@ -1385,7 +1385,11 @@ class BP_Activity_REST_Controller extends WP_REST_Controller {
 						'format'      => 'date-time',
 					),
 					'date_gmt'          => array(
+<<<<<<< HEAD
 						'context'     => array( 'view', 'edit', 'embed' ),
+=======
+						'context'     => array( 'view', 'edit' ),
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 						'description' => __( 'The date the activity was published, as GMT.', 'buddypress' ),
 						'readonly'    => true,
 						'type'        => array( 'string', 'null' ),

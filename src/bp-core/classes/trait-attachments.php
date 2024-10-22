@@ -139,6 +139,10 @@ trait BP_REST_Attachments {
 		}
 
 		return sprintf(
+<<<<<<< HEAD
+=======
+			/* translators: %1$s: baseurl, %2$s: subdir, %3$s: basename. */
+>>>>>>> 2c6b4f2a1f2004f5c9d9ec9001446e1aaf9240f3
 			'%1$s/%2$s/%3$s',
 			$bp_attachments_uploads_dir['baseurl'],
 			$cover_subdir,
