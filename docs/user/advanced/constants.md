@@ -1,5 +1,8 @@
 # BuddyPress Constants
 
+### Predefined
+These Constants are defined by the BuddyPress core.
+
 ### Deprecated
 > [!WARNING]
 > Deprecated Constants are no longer be supported. Furthermore, these Constants may be removed from future versions, therefore it is  recommended to update any code that uses them, appropriately.
