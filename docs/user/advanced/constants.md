@@ -1,6 +1,9 @@
 # BuddyPress Constants
 
 ### Deprecated
+> [!WARNING]
+> Deprecated Constants are no longer be supported. Furthermore, these Constants may be removed from future versions, therefore it is  recommended to update any code that uses them, appropriately.
+
 | Constant                      | Default Value | Description |
 | :----------------------------- | :------------- | :----------- |
 | BP_ACTIVITY_SLUG              | undefined     | If used, a "**doing it wrong**" error notice is cast. |
