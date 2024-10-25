@@ -1,6 +1,6 @@
 # BuddyPress Constants
 
-### Ussr Definable
+### User Definable
 These constants are avaiable to alter the behavior or where and how parts of BuddyPress are loaded.                    
 
 ### Core or Development
