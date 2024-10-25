@@ -1,7 +1,10 @@
 # BuddyPress Constants
 
-### Predefined
-These Constants are defined by the BuddyPress core.
+### Ussr Definable
+These constants are avaiable to alter the behavior or where and how parts of BuddyPress are loaded.                    
+
+### Core or Development
+These Constants are either predefined by the BuddyPress core or for use in a developent envoronment.
 
 ### Deprecated
 > [!WARNING]
