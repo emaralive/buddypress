@@ -37,7 +37,8 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_SHOW_AVATARS                       |               |             |
 
 ### Core or Development
-These Constants are either predefined by the BuddyPress core or for use in a developent envoronment.
+> [!CAUTION]
+> These Constants are either predefined by the BuddyPress core or for use in a developent environment and are not classified as user-definable.
 
 | Constant                        | Default Value | Description |
 | :------------------------------ | :--------- | :---------- |
@@ -47,8 +48,8 @@ These Constants are either predefined by the BuddyPress core or for use in a dev
 | BP_SOURCE_SUBDIRECTORY          |               |             |
 | BP_TESTS_DIR                    |               |             |
 | BP_VERSION                      |The installed version of BuddyPress. |Unique version identifier for each major/minor/patch release (see [Releases](https://codex.buddypress.org/releases/) and [Version Numbering](../../contributor/project/version-numbering.md)).|
-| BP_XPROFILE_BASE_GROUP_NAME     |If **Extended Profiles** component is active, this value will be the label of the primary group of xProfile fields (see [BuddyPress xProfile fields administration](../administration/users/xprofile.md)). Otherwise, the value is undefined.|             |
-| BP_XPROFILE_FULLNAME_FIELD_NAME |If **Extended Profiles** component is active, this value will be the label of the primary xprofile field (see [BuddyPress xProfile fields administration](../administration/users/xprofile.md)). Otherwise, the value is undefined.|             |
+| BP_XPROFILE_BASE_GROUP_NAME     |If **Extended Profiles** component is active, this value will be the label of the primary group of xProfile fields (see [BuddyPress xProfile fields administration](../administration/users/xprofile.md)). Otherwise, the value is undefined.|"**Base**" is the initial value assigned to this Constant. However, this value can be changed via the "**Edit Group**" button (***Primary Tab***) within **`wp-admin/users.php?page=bp-profile-setup`** - Profile Fields administration.|
+| BP_XPROFILE_FULLNAME_FIELD_NAME |If **Extended Profiles** component is active, this value will be the label of the primary xprofile field (see [BuddyPress xProfile fields administration](../administration/users/xprofile.md)). Otherwise, the value is undefined.|"**Name**" is the initial value assigned to this Constant. However, this value can be changed via the "**Edit**" button (***Primary Tab - [(Primary)(required)(Sign-up)] field***) within **`wp-admin/users.php?page=bp-profile-setup`** - Profile Fields administration.|
 
 ### Deprecated
 > [!WARNING]
