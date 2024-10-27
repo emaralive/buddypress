@@ -43,7 +43,7 @@ These Constants are either predefined by the BuddyPress core or for use in a dev
 | :------------------------------ | :--------- | :---------- |
 | BP_DB_VERSION                   |The installed database version of BuddyPress.| Unique database version identifier for each major release (see [Releases](https://codex.buddypress.org/releases/)).
 | BP_LOAD_SOURCE                  |               |             |
-| BP_REQUIRED_PHP_VERSION         |The minimum supported PHP version.|             |
+| BP_REQUIRED_PHP_VERSION         |The minimum supported PHP version.|The minimum supported PHP version as determined by the [BuddyPress PHP Version Support](../../user/getting-started/php-version-support.md) policy, i.e., **Minimum PHP Version**.              |
 | BP_SOURCE_SUBDIRECTORY          |               |             |
 | BP_TESTS_DIR                    |               |             |
 | BP_VERSION                      |The installed version of BuddyPress. |Unique version identifier for each major/minor/patch release (see [Releases](https://codex.buddypress.org/releases/) and [Version Numbering](../../contributor/project/version-numbering.md)).|
