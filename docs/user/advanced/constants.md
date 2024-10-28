@@ -1,4 +1,6 @@
 # BuddyPress Constants
+> [!Note]
+> *A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). Constants are case-sensitive. By convention, constant identifiers are always uppercase*. [PHP Manual - Constants](https://www.php.net/manual/en/language.constants.php)
 
 ### User-Definable
 These constants are avaiable to alter the behavior or where and how parts of BuddyPress are loaded. 
