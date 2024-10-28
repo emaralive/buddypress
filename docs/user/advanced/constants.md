@@ -27,7 +27,7 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_FORUMS_SLUG                        |               |             |
 | BP_GROUPS_DEFAULT_EXTENSION           |               |             |
 | BP_IGNORE_DEPRECATED                  | undefined     | Setting the value to **true** (**enabled**) will  prohibit the loading of any/all deprecated functions. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow the loading of any/all deprecated functions depending on the value of the **`BP_LOAD_DEPRECATED`** Constant. |
-| BP_LOAD_DEPRECATED                    | undefined     | Setting the value to **true** (**enabled**) will  allow the loading of all deprecated functions, given that the **`BP_IGNORE_DEPRECATED`** is **disabled**. |
+| BP_LOAD_DEPRECATED                    | undefined     | Setting the value to **true** (**enabled**) will  allow the loading of all deprecated functions, given that the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow for the loading of the last 2 versions of deprecated functions, if and only if the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**.  |
 | BP_MEMBERS_REQUIRED_PASSWORD_STRENGTH |               |             |
 | BP_MESSAGES_AUTOCOMPLETE_ALL          |               |             |
 | BP_PLUGIN_DIR                         |               |             |
