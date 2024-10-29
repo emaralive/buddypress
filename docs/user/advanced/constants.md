@@ -1,6 +1,16 @@
 # BuddyPress Constants
 > [!Note]
-> *A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). Constants are case-sensitive. By convention, constant identifiers are always uppercase*. [PHP Manual - Constants](https://www.php.net/manual/en/language.constants.php)
+> *A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for magic constants, which aren't actually constants). Constants are case-sensitive. By convention, constant identifiers are always uppercase.*
+> 
+> [PHP Manual - Constants](https://www.php.net/manual/en/language.constants.php)
+
+> [!TIP]
+> *Constants can be defined using the const keyword, or by using the [define()](https://www.php.net/manual/en/function.define.php)-function. While [define()](https://www.php.net/manual/en/function.define.php) allows a constant to be defined to an arbitrary expression, the const keyword has restrictions as outlined in the next paragraph...*
+>
+> *When using the const keyword, only scalar ([bool](https://www.php.net/manual/en/language.types.boolean.php), [int](https://www.php.net/manual/en/language.types.integer.php), [float](https://www.php.net/manual/en/language.types.float.php) and [string](https://www.php.net/manual/en/language.types.string.php)) expressions and constant [arrays](https://www.php.net/manual/en/language.types.array.php) containing only scalar expressions are accepted. It is possible to define constants as a [resource](https://www.php.net/manual/en/language.types.resource.php), but it should be avoided, as it can cause unexpected results.*
+>
+> [PHP Manual - Syntax](https://www.php.net/manual/en/language.constants.php)
+
 
 ### User-Definable
 These constants are avaiable to alter the behavior or where and how parts of BuddyPress are loaded. 
