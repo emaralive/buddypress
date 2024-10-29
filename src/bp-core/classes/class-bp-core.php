@@ -28,7 +28,7 @@ class BP_Core extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'core',
-			__( 'BuddyPress Core', 'buddypress' ),
+			'BuddyPress Core',
 			buddypress()->plugin_dir
 		);
 
@@ -276,7 +276,7 @@ class BP_Core extends BP_Component {
 		$bp->grav_default->blog = apply_filters( 'bp_blog_gravatar_default', $bp->grav_default->user );
 
 		// Only fully deprecate the legacy navigation globals if BP Classic is not active.
-		if ( ! function_exists( 'bp_classic' ) ) {
+		if ( ! bp_is_classic() ) {
 			// Backward compatibility for plugins modifying the legacy bp_nav and bp_options_nav global properties.
 			$bp->bp_nav         = new BP_Core_BP_Nav_BackCompat();
 			$bp->bp_options_nav = new BP_Core_BP_Options_Nav_BackCompat();
@@ -329,6 +329,7 @@ class BP_Core extends BP_Component {
 				'bp',
 				'bp_pages',
 				'bp_invitations',
+				'bp_optouts',
 			)
 		);
 
@@ -439,7 +440,11 @@ class BP_Core extends BP_Component {
 	 *                           description.
 	 */
 	public function rest_api_init( $controllers = array() ) {
+<<<<<<< HEAD
 		$controllers = array( 'BP_REST_Components_V1_Controller' );
+=======
+		$controllers = array( 'BP_Core_Components_REST_Controller' );
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 
 		parent::rest_api_init( $controllers );
 	}

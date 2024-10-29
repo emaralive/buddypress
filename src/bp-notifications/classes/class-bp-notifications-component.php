@@ -28,7 +28,7 @@ class BP_Notifications_Component extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'notifications',
-			_x( 'Notifications', 'Page <title>', 'buddypress' ),
+			'Notifications',
 			buddypress()->plugin_dir,
 			array(
 				'adminbar_myaccount_order' => 30,
@@ -145,7 +145,7 @@ class BP_Notifications_Component extends BP_Component {
 	 *                        description.
 	 */
 	public function register_nav( $main_nav = array(), $sub_nav = array() ) {
-		$slug   = bp_get_notifications_slug();
+		$slug = bp_get_notifications_slug();
 
 		// Add 'Notifications' to the main navigation.
 		$main_nav = array(
@@ -247,8 +247,8 @@ class BP_Notifications_Component extends BP_Component {
 					'<span class="count">' . bp_core_number_format( $count ) . '</span>'
 				);
 			} else {
-				$title  = _x( 'Notifications', 'My Account Notification',         'buddypress' );
-				$unread = _x( 'Unread',        'My Account Notification sub nav', 'buddypress' );
+				$title  = _x( 'Notifications', 'My Account Notification', 'buddypress' );
+				$unread = _x( 'Unread', 'My Account Notification sub nav', 'buddypress' );
 			}
 
 			// Add the "My Account" sub menus.
@@ -296,12 +296,14 @@ class BP_Notifications_Component extends BP_Component {
 				$bp->bp_options_title = __( 'Notifications', 'buddypress' );
 			} else {
 				$bp->bp_options_title  = bp_get_displayed_user_fullname();
-				$bp->bp_options_avatar = bp_core_fetch_avatar( array(
-					'item_id' => bp_displayed_user_id(),
-					'type'    => 'thumb',
-					/* translators: %s: member name */
-					'alt'     => sprintf( __( 'Profile picture of %s', 'buddypress' ), bp_get_displayed_user_fullname() )
-				) );
+				$bp->bp_options_avatar = bp_core_fetch_avatar(
+					array(
+						'item_id' => bp_displayed_user_id(),
+						'type'    => 'thumb',
+						/* translators: %s: member name */
+						'alt'     => sprintf( __( 'Profile picture of %s', 'buddypress' ), bp_get_displayed_user_fullname() ),
+					)
+				);
 			}
 		}
 
@@ -316,12 +318,14 @@ class BP_Notifications_Component extends BP_Component {
 	public function setup_cache_groups() {
 
 		// Global groups.
-		wp_cache_add_global_groups( array(
-			'bp_notifications',
-			'notification_meta',
-			'bp_notifications_unread_count',
-			'bp_notifications_grouped_notifications',
-		) );
+		wp_cache_add_global_groups(
+			array(
+				'bp_notifications',
+				'notification_meta',
+				'bp_notifications_unread_count',
+				'bp_notifications_grouped_notifications',
+			)
+		);
 
 		parent::setup_cache_groups();
 	}
@@ -335,6 +339,10 @@ class BP_Notifications_Component extends BP_Component {
 	 *                           description.
 	 */
 	public function rest_api_init( $controllers = array() ) {
+<<<<<<< HEAD
 		parent::rest_api_init( array( 'BP_REST_Notifications_V1_Controller' ) );
+=======
+		parent::rest_api_init( array( 'BP_Notifications_REST_Controller' ) );
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 	}
 }

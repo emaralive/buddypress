@@ -50,7 +50,7 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 			),
 		);
 
-		$signup = BP_Signup::add( $args );
+		$signup = self::factory()->signup->create( $args );
 		$this->assertNotEmpty( $signup );
 
 		$s = new BP_Signup( $signup );
@@ -69,7 +69,7 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 		bp_xprofile_update_field_meta( 1, 'default_visibility', 'adminsonly' );
 
 		// Add new signup without a custom field visibility set for field_1.
-		$signup = BP_Signup::add( array(
+		$signup = self::factory()->signup->create( array(
 			'title' => 'Foo bar',
 			'user_login' => 'user1',
 			'user_email' => 'user1@example.com',
@@ -359,50 +359,112 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 	}
 
 	/**
+	 * @ticket BP8552
+	 * @group cache
+	 */
+	public function test_signup_query_with_ids_cache_results() {
+		global $wpdb;
+
+		self::factory()->signup->create_many( 2 );
+
+		// Reset.
+		$wpdb->num_queries = 0;
+
+		$first_query = BP_Signup::get(
+			array(
+				'cache_results' => true,
+				'fields'        => 'ids',
+			)
+		);
+
+		$queries_before = get_num_queries();
+
+		$second_query = BP_Signup::get(
+			array(
+				'cache_results' => false,
+				'fields'        => 'ids',
+			)
+		);
+
+		$queries_after = get_num_queries();
+
+		$this->assertNotSame( $queries_before, $queries_after, 'Assert that queries are run' );
+		$this->assertSame( 4, $queries_after, 'Assert that the uncached query was run' );
+		$this->assertSameSets( $first_query['signups'], $second_query['signups'], 'Results of the query are expected to match.' );
+		$this->assertSame( $first_query['total'], $second_query['total'], 'Results of the query are expected to match.' );
+	}
+
+	/**
+	 * @ticket BP8552
+	 * @group cache
+	 */
+	public function test_signup_query_with_all_cache_results() {
+		global $wpdb;
+
+		self::factory()->signup->create_many( 2 );
+
+		// Reset.
+		$wpdb->num_queries = 0;
+
+		$first_query = BP_Signup::get(
+			array( 'cache_results' => true )
+		);
+
+		$queries_before = get_num_queries();
+
+		$second_query = BP_Signup::get(
+			array( 'cache_results' => false )
+		);
+
+		$queries_after = get_num_queries();
+
+		$this->assertNotSame( $queries_before, $queries_after, 'Assert that queries are run' );
+		$this->assertSame( 5, $queries_after, 'Assert that the uncached query was run' );
+		$this->assertSame( $first_query['total'], $second_query['total'], 'Results of the query are expected to match.' );
+	}
+
+	/**
 	 * @group cache
 	 */
 	public function test_get_queries_should_be_cached() {
 		global $wpdb;
 
+<<<<<<< HEAD
 		self::factory()->signup->create();
+=======
+		self::factory()->signup->create_many( 2 );
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 
-		$found1 = BP_Signup::get(
-			array(
-				'fields' => 'ids',
-			)
-		);
+		// Reset.
+		$wpdb->num_queries = 0;
 
-		$num_queries = $wpdb->num_queries;
+		$args = array( 'fields' => 'ids' );
 
-		$found2 = BP_Signup::get(
-			array(
-				'fields' => 'ids',
-			)
-		);
+		$first_query = BP_Signup::get( $args );
 
-		$this->assertEqualSets( $found1, $found2 );
-		$this->assertSame( $num_queries, $wpdb->num_queries );
+		$queries_before = get_num_queries();
+
+		$second_query = BP_Signup::get( $args );
+
+		$queries_after = get_num_queries();
+
+		$this->assertSame( $queries_before, $queries_after, 'Assert that queries are run' );
+		$this->assertSame( 2, $queries_after, 'Assert that the uncached query was run' );
+		$this->assertSameSets( $first_query['signups'], $second_query['signups'], 'Results of the query are expected to match.' );
 	}
 
 	/**
 	 * @group cache
 	 */
 	public function test_get_query_caches_should_be_busted_by_add() {
-		$s1 = self::factory()->signup->create();
+		$s1   = self::factory()->signup->create();
+		$args = array( 'fields' => 'ids' );
 
-		$found1 = BP_Signup::get(
-			array(
-				'fields' => 'ids',
-			)
-		);
+		$found1 = BP_Signup::get( $args );
 		$this->assertEqualSets( array( $s1 ), $found1['signups'] );
 
 		$s2 = self::factory()->signup->create();
-		$found2 = BP_Signup::get(
-			array(
-				'fields' => 'ids',
-			)
-		);
+		$found2 = BP_Signup::get( $args );
 		$this->assertEqualSets( array( $s2 ), $found2['signups'] );
 	}
 
@@ -425,10 +487,10 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 				'meta1' => 'meta2',
 			),
 		);
-		$s1 = BP_Signup::add( $args );
+		$s1 = self::factory()->signup->create( $args );
 
 		$args['meta']['field_1'] = 'Fozz';
-		$s2 = BP_Signup::add( $args );
+		$s2 = self::factory()->signup->create( $args );
 
 		// Should find both.
 		$found1 = BP_Signup::get( array(
@@ -474,10 +536,10 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 				'meta1' => 'meta2',
 			),
 		);
-		$s1 = BP_Signup::add( $args );
+		$s1 = self::factory()->signup->create( $args );
 
 		$args['meta']['field_1'] = 'Fozz';
-		$s2 = BP_Signup::add( $args );
+		$s2 = self::factory()->signup->create( $args );
 
 		// Should find both.
 		$found1 = BP_Signup::get( array(
@@ -521,7 +583,7 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 		);
 		$this->assertEqualSets( array( $s1, $s2 ), $found1['signups'] );
 
-		$activate = BP_Signup::activate( (array) $s2 );
+		BP_Signup::activate( (array) $s2 );
 
 		$found2 = BP_Signup::get(
 			array(
@@ -570,7 +632,7 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 		$this->assertEquals( $s1, $found1->id );
 		$this->assertFalse( $found1->active );
 
-		$activate = BP_Signup::activate( (array) $s1 );
+		BP_Signup::activate( (array) $s1 );
 
 		$found2 = new BP_Signup( $s1 );
 		$this->assertEquals( $s1, $found2->id );
@@ -617,6 +679,7 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 
 		BP_Signup::resend( $s1->id );
 
+<<<<<<< HEAD
 		$this->assertFalse( BP_Signup::resend_activation( 0 ) );
 		$this->assertFalse( BP_Signup::resend_activation( '' ) );
 		$this->assertTrue( BP_Signup::resend_activation( $s1 ) );
@@ -634,6 +697,21 @@ class BP_Tests_BP_Signup extends BP_UnitTestCase {
 
 		add_filter( 'bp_core_signup_resend_activation_lock_time', '__return_zero' );
 		$this->assertTrue( BP_Signup::resend_activation( $s1 ) );
+=======
+		$this->assertFalse( BP_Signup::allow_activation_resend( 0 ) );
+		$this->assertFalse( BP_Signup::allow_activation_resend( '' ) );
+		$this->assertTrue( BP_Signup::allow_activation_resend( $s1 ) );
+
+		$s1->count_sent = 0;
+		$this->assertTrue( BP_Signup::allow_activation_resend( $s1 ) );
+
+		$s1->count_sent = 1;
+		$s1->recently_sent = true;
+		$this->assertFalse( BP_Signup::allow_activation_resend( $s1 ) );
+
+		add_filter( 'bp_core_signup_resend_activation_lock_time', '__return_zero' );
+		$this->assertTrue( BP_Signup::allow_activation_resend( $s1 ) );
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 		remove_filter( 'bp_core_signup_resend_activation_lock_time', '__return_zero' );
 	}
 }

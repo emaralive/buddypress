@@ -614,6 +614,7 @@ function bp_core_get_active_member_count() {
 	global $wpdb;
 
 	$count = get_transient( 'bp_active_member_count' );
+
 	if ( false === $count ) {
 		$bp = buddypress();
 
@@ -1591,11 +1592,13 @@ add_filter( 'pre_update_site_option_illegal_names', 'bp_core_get_illegal_names' 
  *
  * Performs the following checks:
  *   - Is the email address well-formed?
- *   - Is the email address already used?
+ *   - Is the email address already used in a user?
+ *   - Is the email address already used in a signup?
  *   - If there are disallowed email domains, is the current domain among them?
- *   - If there's an email domain whitelist, is the current domain on it?
+ *   - If there's an email domain allowlist, is the current domain on it?
  *
  * @since 1.6.2
+ * @since 15.0.0 Check if the email address is already used in a signup.
  *
  * @param string $user_email The email being checked.
  * @return bool|array True if the address passes all checks; otherwise an array
@@ -1620,21 +1623,33 @@ function bp_core_validate_email_address( $user_email ) {
 	// Is the email on the Limited Email Domains list?
 	// Note: This check only works on Multisite.
 	$limited_email_domains = get_site_option( 'limited_email_domains' );
-	if ( is_array( $limited_email_domains ) && empty( $limited_email_domains ) == false ) {
+	if ( is_array( $limited_email_domains ) && ! empty( $limited_email_domains ) ) {
 		$emaildomain = substr( $user_email, 1 + strpos( $user_email, '@' ) );
-		if ( ! in_array( $emaildomain, $limited_email_domains ) ) {
+
+		if ( ! in_array( $emaildomain, $limited_email_domains, true ) ) {
 			$errors['domain_not_allowed'] = 1;
 		}
 	}
 
-	// Is the email already in use?
+	// Is the email already in use in a user?
 	if ( email_exists( $user_email ) ) {
 		$errors['in_use'] = 1;
 	}
 
-	$retval = ! empty( $errors ) ? $errors : true;
+	// Is the email already in use in a signup?
+	if ( ! isset( $errors['in_use'] ) ) {
+		$signups = BP_Signup::get(
+			array( 'user_email' => $user_email )
+		);
 
-	return $retval;
+		$signup = isset( $signups['signups'] ) && ! empty( $signups['signups'][0] );
+
+		if ( $signup ) {
+			$errors['in_use'] = 1;
+		}
+	}
+
+	return ! empty( $errors ) ? $errors : true;
 }
 
 /**
@@ -1711,8 +1726,8 @@ function bp_core_validate_user_signup( $user_name, $user_email ) {
 
 		// User name can't be on the list of illegal names.
 		$illegal_names = get_site_option( 'illegal_names' );
-		if ( in_array( $user_name, (array) $illegal_names ) ) {
-			$errors->add( 'user_name', __( 'That username is not allowed', 'buddypress' ) );
+		if ( in_array( $user_name, (array) $illegal_names, true ) ) {
+			$errors->add( 'user_name', __( 'That username is not allowed.', 'buddypress' ) );
 		}
 
 		// User name must pass WP's validity check.
@@ -1722,37 +1737,48 @@ function bp_core_validate_user_signup( $user_name, $user_email ) {
 
 		// Minimum of 4 characters.
 		if ( strlen( $user_name ) < 4 ) {
-			$errors->add( 'user_name',  __( 'Username must be at least 4 characters', 'buddypress' ) );
+			$errors->add( 'user_name', __( 'Username must be at least 4 characters.', 'buddypress' ) );
+		}
+
+		// Maximum of 60 characters.
+		if ( strlen( $user_name ) > 60 ) {
+			$errors->add( 'user_name', __( 'Username may not be longer than 60 characters.', 'buddypress' ) );
 		}
 
 		// No underscores. @todo Why not?
-		if ( false !== strpos( ' ' . $user_name, '_' ) ) {
+		if ( str_contains( ' ' . $user_name, '_' ) ) {
 			$errors->add( 'user_name', __( 'Sorry, usernames may not contain the character "_"!', 'buddypress' ) );
 		}
 
 		// No usernames that are all numeric. @todo Why?
 		$match = array();
 		preg_match( '/[0-9]*/', $user_name, $match );
-		if ( $match[0] == $user_name ) {
+
+		// Check for valid letters.
+		$valid_letters = preg_match( '/[a-zA-Z]+/', $user_name );
+
+		if ( $match[0] === $user_name || ! $valid_letters ) {
 			$errors->add( 'user_name', __( 'Sorry, usernames must have letters too!', 'buddypress' ) );
 		}
 
 		// Check into signups.
-		$signups = BP_Signup::get( array(
-			'user_login' => $user_name,
-		) );
+		$signups = BP_Signup::get(
+			array( 'user_login' => $user_name )
+		);
 
-		$signup = isset( $signups['signups'] ) && ! empty( $signups['signups'][0] ) ? $signups['signups'][0] : false;
+		$signup           = isset( $signups['signups'] ) && ! empty( $signups['signups'][0] );
+		$user_name_exists = ( empty( $signup ) && username_exists( $user_name ) ) || ! empty( $signup );
 
 		// Check if the username has been used already.
-		if ( username_exists( $user_name ) || ! empty( $signup ) ) {
+		if ( true === $user_name_exists ) {
 			$errors->add( 'user_name', __( 'Sorry, that username already exists!', 'buddypress' ) );
 		}
 
-		// Validate the email address and process the validation results into
-		// error messages.
-		$validate_email = bp_core_validate_email_address( $user_email );
-		bp_core_add_validation_error_messages( $errors, $validate_email );
+		// Validate the email address.
+		bp_core_add_validation_error_messages(
+			$errors,
+			bp_core_validate_email_address( $user_email )
+		);
 
 		// Assemble the return array.
 		$result = array(
@@ -1761,7 +1787,7 @@ function bp_core_validate_user_signup( $user_name, $user_email ) {
 			'errors'     => $errors,
 		);
 
-		// Apply WPMU legacy filter.
+		/** This filter is documented in wp-includes/ms-functions.php */
 		$result = apply_filters( 'wpmu_validate_user_signup', $result );
 	}
 
@@ -2499,15 +2525,24 @@ function bp_members_login_resend_activation_email() {
 
 	// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
 
+<<<<<<< HEAD
 	if ( empty( $signups['signups'] ) || ! is_array( $signups['signups'] ) ) {
+=======
+	if ( empty( $signups['signups'] ) || ! is_array( $signups['signups'] ) || empty( $signups['signups'][0] ) ) {
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 		$error = __( '<strong>Error</strong>: Invalid signup id.', 'buddypress' );
 		return;
 	}
 
 	$signup = $signups['signups'][0];
 
+<<<<<<< HEAD
 	if ( false === BP_Signup::resend_activation( $signup ) ) {
 		$error = __( '<strong>Error</strong>: Your account activation email resend has been blocked temporarily due to multiple attempts, please try again later.', 'buddypress' );
+=======
+	if ( false === BP_Signup::allow_activation_resend( $signup ) ) {
+		$error = __( '<strong>Error</strong>: You\'ve reached the limit for resending your account activation email. Please wait a few minutes and try again. If you continue to experience issues, contact support for assistance.', 'buddypress' );
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 		return;
 	}
 
@@ -2571,6 +2606,12 @@ function bp_core_wpsignup_redirect() {
 	} elseif ( $referer ) {
 		$referer_path     = wp_parse_url( $referer, PHP_URL_PATH );
 		$is_site_creation = false !== strpos( $referer_path, 'wp-admin/my-sites.php' );
+	} else {
+		// The WordPress registration setting must allow access.
+		$registration = get_site_option( 'registration' );
+		if ( is_user_logged_in() && in_array( $registration, array( 'blog', 'all' ), true ) ) {
+			$is_site_creation = true;
+		}
 	}
 
 	if ( $is_site_creation ) {
@@ -2778,7 +2819,7 @@ function bp_get_member_type_tax_labels() {
 			'back_to_items'              => _x( '&larr; Back to Member Types', 'Member type taxonomy back to items label', 'buddypress' ),
 
 			// Specific to BuddyPress.
-			'bp_type_id_label'           => _x( 'Member Type ID', 'BP Member type ID label', 'buddypress' ),
+			'bp_type_id_label'           => _x( 'Member Type ID (required)', 'BP Member type ID label', 'buddypress' ),
 			'bp_type_id_description'     => _x( 'Enter a lower-case string without spaces or special characters (used internally to identify the member type).', 'BP Member type ID description', 'buddypress' ),
 			'bp_type_show_in_list'       => _x( 'Show on Member', 'BP Member type show in list', 'buddypress' ),
 		)

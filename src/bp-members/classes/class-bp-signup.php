@@ -257,7 +257,8 @@ class BP_Signup {
 	 * Fetch signups based on parameters.
 	 *
 	 * @since 2.0.0
-	 * @since 6.0.0 Added a list of allowed orderby parameters.
+	 * @since 6.0.0  Added a list of allowed orderby parameters.
+	 * @since 15.0.0 Introduced the `cache_results` parameter.
 	 *
 	 * @global wpdb $wpdb The WordPress database object.
 	 *
@@ -265,15 +266,16 @@ class BP_Signup {
 	 *     The argument to retrieve desired signups.
 	 *     @type int         $offset         Offset amount. Default 0.
 	 *     @type int         $number         How many to fetch. Pass -1 to fetch all. Default 1.
-	 *     @type bool|string $usersearch     Whether or not to search for a username. Default false.
-	 *     @type string      $orderby        Order By parameter. Possible values are `signup_id`, `login`, `email`,
+	 *     @type bool|string $usersearch     Whether to search for a username. Default false.
+	 *     @type string      $orderby        Order by parameter. Possible values are `signup_id`, `login`, `email`,
 	 *                                       `registered`, `activated`. Default `signup_id`.
 	 *     @type string      $order          Order direction. Default 'DESC'.
-	 *     @type bool        $include        Whether or not to include more specific query params.
+	 *     @type bool        $include        Whether to include more specific query params.
 	 *     @type string      $activation_key Activation key to search for. If specified, all other
 	 *                                       parameters will be ignored.
 	 *     @type int|bool    $active         Pass 0 for inactive signups, 1 for active signups,
 	 *                                       and `false` to ignore.
+	 *     @type bool        $cache_results  Optional. Whether to cache signup information. Default true.
 	 *     @type string      $user_login     Specific user login to return.
 	 *     @type string      $fields         Which fields to return. Specify 'ids' to fetch a list of signups IDs.
 	 *                                       Default: 'all' (return BP_Signup objects).
@@ -300,6 +302,7 @@ class BP_Signup {
 				'active'         => 0,
 				'user_email'     => '',
 				'user_login'     => '',
+				'cache_results'  => true,
 				'fields'         => 'all',
 			),
 			'bp_core_signups_get_args'
@@ -317,19 +320,19 @@ class BP_Signup {
 		$r['orderby'] = sanitize_title( $r['orderby'] );
 
 		$sql = array(
-			'select'     => "SELECT DISTINCT signup_id",
-			'from'       => "{$bp->members->table_name_signups}",
-			'where'      => array(),
-			'orderby'    => '',
-			'limit'      => '',
+			'select'  => 'SELECT DISTINCT signup_id',
+			'from'    => "{$bp->members->table_name_signups}",
+			'where'   => array(),
+			'orderby' => '',
+			'limit'   => '',
 		);
 
 		// Activation key trumps other parameters because it should be unique.
 		if ( ! empty( $r['activation_key'] ) ) {
-			$sql['where'][] = $wpdb->prepare( "activation_key = %s", $r['activation_key'] );
+			$sql['where'][] = $wpdb->prepare( 'activation_key = %s', $r['activation_key'] );
 
 			// `Include` finds signups by ID.
-		} else if ( ! empty( $r['include'] ) ) {
+		} elseif ( ! empty( $r['include'] ) ) {
 
 			$in             = implode( ',', wp_parse_id_list( $r['include'] ) );
 			$sql['where'][] = "signup_id IN ({$in})";
@@ -341,31 +344,31 @@ class BP_Signup {
 		} else {
 			// Active.
 			if ( false !== $r['active'] ) {
-				$sql['where'][] = $wpdb->prepare( "active = %d", absint( $r['active'] ) );
+				$sql['where'][] = $wpdb->prepare( 'active = %d', absint( $r['active'] ) );
 			}
 
 			// Search terms.
 			if ( ! empty( $r['usersearch'] ) ) {
 				$search_terms_like = '%' . bp_esc_like( $r['usersearch'] ) . '%';
-				$sql['where'][]    = $wpdb->prepare( "( user_login LIKE %s OR user_email LIKE %s OR meta LIKE %s )", $search_terms_like, $search_terms_like, $search_terms_like );
+				$sql['where'][]    = $wpdb->prepare( '( user_login LIKE %s OR user_email LIKE %s OR meta LIKE %s )', $search_terms_like, $search_terms_like, $search_terms_like );
 			}
 
 			// User email.
 			if ( ! empty( $r['user_email'] ) ) {
-				$sql['where'][] = $wpdb->prepare( "user_email = %s", $r['user_email'] );
+				$sql['where'][] = $wpdb->prepare( 'user_email = %s', $r['user_email'] );
 			}
 
 			// User login.
 			if ( ! empty( $r['user_login'] ) ) {
-				$sql['where'][] = $wpdb->prepare( "user_login = %s", $r['user_login'] );
+				$sql['where'][] = $wpdb->prepare( 'user_login = %s', $r['user_login'] );
 			}
 
-			$order	        = bp_esc_sql_order( $r['order'] );
+			$order          = bp_esc_sql_order( $r['order'] );
 			$sql['orderby'] = "ORDER BY {$r['orderby']} {$order}";
 
 			$number = intval( $r['number'] );
 			if ( -1 !== $number ) {
-				$sql['limit'] = $wpdb->prepare( "LIMIT %d, %d", absint( $r['offset'] ), $number );
+				$sql['limit'] = $wpdb->prepare( 'LIMIT %d, %d', absint( $r['offset'] ), $number );
 			}
 		}
 
@@ -379,32 +382,37 @@ class BP_Signup {
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param string $value SQL statement.
-		 * @param array  $sql   Array of SQL statement parts.
-		 * @param array  $args  Array of original arguments for get() method.
-		 * @param array  $r     Array of parsed arguments for get() method.
+		 * @param string $paged_signups_sql SQL statement.
+		 * @param array  $sql               Array of SQL statement parts.
+		 * @param array  $args              Array of original arguments for get() method.
+		 * @param array  $r                 Array of parsed arguments for get() method.
 		 */
 		$paged_signups_sql = apply_filters( 'bp_members_signups_paged_query', $paged_signups_sql, $sql, $args, $r );
 
-		$cached = bp_core_get_incremented_cache( $paged_signups_sql, 'bp_signups' );
-		if ( false === $cached ) {
-			$paged_signup_ids = $wpdb->get_col( $paged_signups_sql );
-			bp_core_set_incremented_cache( $paged_signups_sql, 'bp_signups', $paged_signup_ids );
+		if ( $r['cache_results'] ) {
+			$cached = bp_core_get_incremented_cache( $paged_signups_sql, 'bp_signups' );
+			if ( false === $cached ) {
+				$paged_signup_ids = $wpdb->get_col( $paged_signups_sql );
+				bp_core_set_incremented_cache( $paged_signups_sql, 'bp_signups', $paged_signup_ids );
+			} else {
+				$paged_signup_ids = $cached;
+			}
 		} else {
-			$paged_signup_ids = $cached;
+			$paged_signup_ids = $wpdb->get_col( $paged_signups_sql );
 		}
 
 		// We only want the IDs.
 		if ( 'ids' === $r['fields'] ) {
 			$paged_signups = array_map( 'intval', $paged_signup_ids );
-
 		} else {
-			$uncached_signup_ids = bp_get_non_cached_ids( $paged_signup_ids, 'bp_signups' );
-			if ( $uncached_signup_ids ) {
-				$signup_ids_sql      = implode( ',', array_map( 'intval', $uncached_signup_ids ) );
-				$signup_data_objects = $wpdb->get_results( "SELECT * FROM {$bp->members->table_name_signups} WHERE signup_id IN ({$signup_ids_sql})" );
-				foreach ( $signup_data_objects as $signup_data_object ) {
-					wp_cache_set( $signup_data_object->signup_id, $signup_data_object, 'bp_signups' );
+			if ( $r['cache_results'] ) {
+				$uncached_signup_ids = bp_get_non_cached_ids( $paged_signup_ids, 'bp_signups' );
+				if ( $uncached_signup_ids ) {
+					$signup_ids_sql      = implode( ',', array_map( 'intval', $uncached_signup_ids ) );
+					$signup_data_objects = $wpdb->get_results( "SELECT * FROM {$bp->members->table_name_signups} WHERE signup_id IN ({$signup_ids_sql})" );
+					foreach ( $signup_data_objects as $signup_data_object ) {
+						wp_cache_set( $signup_data_object->signup_id, $signup_data_object, 'bp_signups' );
+					}
 				}
 			}
 
@@ -418,26 +426,33 @@ class BP_Signup {
 		$total_signups_sql = "SELECT COUNT(DISTINCT signup_id) FROM {$sql['from']} {$sql['where']}";
 
 		/**
-		 * Filters the Signups count query.
+		 * Filters the signups count query.
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param string $value SQL statement.
-		 * @param array  $sql   Array of SQL statement parts.
-		 * @param array  $args  Array of original arguments for get() method.
-		 * @param array  $r     Array of parsed arguments for get() method.
+		 * @param string $total_signups_sql SQL statement.
+		 * @param array  $sql               Array of SQL statement parts.
+		 * @param array  $args              Array of original arguments for get() method.
+		 * @param array  $r                 Array of parsed arguments for get() method.
 		 */
 		$total_signups_sql = apply_filters( 'bp_members_signups_count_query', $total_signups_sql, $sql, $args, $r );
 
-		$cached = bp_core_get_incremented_cache( $total_signups_sql, 'bp_signups' );
-		if ( false === $cached ) {
-			$total_signups = (int) $wpdb->get_var( $total_signups_sql );
-			bp_core_set_incremented_cache( $total_signups_sql, 'bp_signups', $total_signups );
+		if ( $r['cache_results'] ) {
+			$cached = bp_core_get_incremented_cache( $total_signups_sql, 'bp_signups' );
+			if ( false === $cached ) {
+				$total_signups = (int) $wpdb->get_var( $total_signups_sql );
+				bp_core_set_incremented_cache( $total_signups_sql, 'bp_signups', $total_signups );
+			} else {
+				$total_signups = (int) $cached;
+			}
 		} else {
-			$total_signups = (int) $cached;
+			$total_signups = (int) $wpdb->get_var( $total_signups_sql );
 		}
 
-		return array( 'signups' => $paged_signups, 'total' => $total_signups );
+		return array(
+			'signups' => $paged_signups,
+			'total'   => $total_signups,
+		);
 	}
 
 	/**
@@ -807,6 +822,157 @@ class BP_Signup {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Resend an activation email.
+	 *
+	 * @since 2.0.0
+	 * @since 15.0.0 Added the ability to resend to a single ID.
+	 *
+	 * @param array|int $signup_ids Single ID or list of IDs to resend.
+	 * @return array
+	 */
+	public static function resend( $signup_ids = array() ) {
+		if ( empty( $signup_ids ) ) {
+			return array();
+		}
+
+		if ( ! is_array( $signup_ids ) ) {
+			$signup_ids = array( $signup_ids );
+		}
+
+		$to_resend = self::get(
+			array(
+				'include' => wp_parse_id_list( $signup_ids ),
+			)
+		);
+
+		$signups = $to_resend['signups'];
+
+		if ( ! $signups ) {
+			return array();
+		}
+
+		$result = array();
+
+		/**
+		 * Fires before activation emails are resent.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param array $signup_ids Array of IDs to resend activation emails to.
+		 */
+		do_action( 'bp_core_signup_before_resend', $signup_ids );
+
+		foreach ( $signups as $signup ) {
+
+			$meta               = $signup->meta;
+			$meta['sent_date']  = current_time( 'mysql', true );
+			$meta['count_sent'] = $signup->count_sent + 1;
+
+			// Send activation email.
+			if ( is_multisite() ) {
+				// Should we send the user or blog activation email?
+				if ( ! empty( $signup->domain ) || ! empty( $signup->path ) ) {
+					wpmu_signup_blog_notification( $signup->domain, $signup->path, $signup->title, $signup->user_login, $signup->user_email, $signup->activation_key, $meta );
+				} else {
+					wpmu_signup_user_notification( $signup->user_login, $signup->user_email, $signup->activation_key, $meta );
+				}
+			} else {
+
+				// Check user status before sending email.
+				$user_id = email_exists( $signup->user_email );
+
+				if ( ! empty( $user_id ) && 2 !== self::check_user_status( $user_id ) ) {
+
+					// Status is not 2, so user's account has been activated.
+					$result['errors'][ $signup->signup_id ] = array( $signup->user_login, esc_html__( 'the sign-up has already been activated.', 'buddypress' ) );
+
+					// Repair signups table.
+					self::validate( $signup->activation_key );
+
+					continue;
+
+					// Send the validation email.
+				} else {
+					$salutation = $signup->user_login;
+					if ( bp_is_active( 'xprofile' ) && isset( $meta[ 'field_' . bp_xprofile_fullname_field_id() ] ) ) {
+						$salutation = $meta[ 'field_' . bp_xprofile_fullname_field_id() ];
+					}
+
+					bp_core_signup_send_validation_email( false, $signup->user_email, $signup->activation_key, $salutation );
+				}
+			}
+
+			// Update metas.
+			$result['resent'][] = self::update(
+				array(
+					'signup_id' => $signup->signup_id,
+					'meta'      => $meta,
+				)
+			);
+		}
+
+		/**
+		 * Fires after activation email(s) are/is resent.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param array $signup_ids Array of IDs to resend activation emails to.
+		 * @param array $result     Updated metadata related to activation emails.
+		 */
+		do_action( 'bp_core_signup_after_resend', $signup_ids, $result );
+
+		/**
+		 * Filters the result of the metadata for signup activation email resends.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param array $result Updated metadata related to activation emails.
+		 */
+		return apply_filters( 'bp_core_signup_resend', $result );
+	}
+
+	/**
+	 * Check if an activation email can be resent.
+	 *
+	 * @since 15.0.0
+	 *
+	 * @param BP_Signup $signup The signup object.
+	 * @return bool
+	 */
+	public static function allow_activation_resend( $signup ) {
+
+		// Bail if the signup is not a BP_Signup object.
+		if ( ! $signup instanceof BP_Signup ) {
+			return false;
+		}
+
+		// Allow the activation email to be sent if not already.
+		if ( ! $signup->recently_sent || ! $signup->count_sent ) {
+			return true;
+		}
+
+		$sent_at = mysql2date( 'U', $signup->date_sent );
+		$now     = time();
+		$diff    = $now - $sent_at;
+
+		/**
+		 * Filters the lock time for the resend activation.
+		 *
+		 * @since 15.0.0
+		 *
+		 * @param float|int $lock_time The lock time for the resend activation. Default: 1 hour.
+		 * @param BP_Signup $signup The signup object.
+		 */
+		$lock_time = apply_filters( 'bp_core_signup_resend_activation_lock_time', HOUR_IN_SECONDS, $signup );
+
+		// If the activation email was sent less than the lock time ago.
+		return false === ( $diff < $lock_time );
+	}
+
+	/**
+>>>>>>> cff046e571a8a74202dd5571034f7e8e9baae35a
 	 * Activate a pending account.
 	 *
 	 * @since 2.0.0

@@ -6,7 +6,7 @@
  *
  * @package BuddyPress
  * @subpackage BP_Theme_Compat
- * @version 14.0.0
+ * @version 14.3.0
  */
 
 // Exit if accessed directly.
@@ -58,7 +58,7 @@ class BP_Legacy extends BP_Theme_Compat {
 	protected function setup_globals() {
 		$bp            = buddypress();
 		$this->id      = 'legacy';
-		$this->name    = __( 'BuddyPress Legacy', 'buddypress' );
+		$this->name    = 'BP Legacy';
 		$this->version = bp_get_version();
 		$this->dir     = trailingslashit( $bp->themes_dir . '/bp-legacy' );
 		$this->url     = trailingslashit( $bp->themes_url . '/bp-legacy' );
@@ -406,7 +406,7 @@ class BP_Legacy extends BP_Theme_Compat {
 		$locations = array();
 
 		// Ensure the assets can be located when running from /src/.
-		if ( defined( 'BP_SOURCE_SUBDIRECTORY' ) && BP_SOURCE_SUBDIRECTORY === 'src' ) {
+		if ( bp_is_running_from_src_subdirectory() ) {
 			$file = str_replace( '.min', '', $file );
 		}
 
@@ -1614,6 +1614,15 @@ function bp_legacy_theme_ajax_joinleave_group() {
 		case 'join_group' :
 			if ( ! bp_current_user_can( 'groups_join_group', array( 'group_id' => $group->id ) ) ) {
 				esc_html_e( 'Error joining group', 'buddypress' );
+			}
+
+			/*
+			 * Ensure that the invite_status key exists, to avoid a group
+			 * being joinable when its creation process was interrupted.
+			 */
+			if ( ! groups_get_groupmeta( $group->id, 'invite_status' ) ) {
+				esc_html_e( 'Error joining group', 'buddypress' );
+				break;
 			}
 
 			check_ajax_referer( 'groups_join_group' );
