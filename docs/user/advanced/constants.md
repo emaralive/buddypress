@@ -15,8 +15,8 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_AVATAR_ORIGINAL_MAX_WIDTH          | 450 (pixels) |             |
 | BP_AVATAR_THUMB_HEIGHT                | 50 (pixels) |             |
 | BP_AVATAR_THUMB_WIDTH                 | 50 (pixels) |             |
-| BP_AVATAR_UPLOAD_PATH                 | The filesystem directory path for Avatar uploads |             |
-| BP_AVATAR_URL                         | The URL directory path for Avatar uploads |             |
+| BP_AVATAR_UPLOAD_PATH                 | The&nbsp;filesystem&nbsp;directory&nbsp;path for Avatar uploads |             |
+| BP_AVATAR_URL                         | The&nbsp;URL&nbsp;directory&nbsp;path for Avatar uploads |             |
 | BP_DEFAULT_COMPONENT                  | undefined |             |
 | BP_DISABLE_AUTO_GROUP_JOIN            | undefined |             |
 | BP_EMBED_DISABLE_ACTIVITY             | undefined |             |
@@ -32,8 +32,8 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_LOAD_DEPRECATED                    | undefined     |Setting the value to **true** (**enabled**) will  allow the loading of all deprecated functions, given that the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow for the loading of the last 2 versions of deprecated functions, if and only if the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**.   |
 | BP_MEMBERS_REQUIRED_PASSWORD_STRENGTH | undefined |             |
 | BP_MESSAGES_AUTOCOMPLETE_ALL          | undefined |             |
-| BP_PLUGIN_DIR                         |The filesystem directory path (with trailing slash) for the BuddyPress plugin |             |
-| BP_PLUGIN_URL                         | The URL directory path (with trailing slash) for the BuddyPress plugin |             |
+| BP_PLUGIN_DIR                         |The&nbsp;filesystem&nbsp;directory&nbsp;path (with trailing slash) for the BuddyPress plugin |             |
+| BP_PLUGIN_URL                         | The&nbsp;URL&nbsp;directory&nbsp;path (with trailing slash) for the BuddyPress plugin |             |
 | BP_ROOT_BLOG                          | 1 (integer) |             |
 | BP_SEARCH_SLUG                        | search (string) |             |
 | BP_SHOW_AVATARS                       | 1 (integer) |             |
