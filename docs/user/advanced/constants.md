@@ -7,36 +7,36 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 
 | Constant                              | Default Value | Description |
 | :------------------------------------ | :------------ | :----------- |
-| BP_AVATAR_DEFAULT                     |               |             |
-| BP_AVATAR_DEFAULT_THUMB               |               |             |
-| BP_AVATAR_FULL_HEIGHT                 |               |             |
-| BP_AVATAR_FULL_WIDTH                  |               |             |
-| BP_AVATAR_ORIGINAL_MAX_FILESIZE       |               |             |
-| BP_AVATAR_ORIGINAL_MAX_WIDTH          |               |             |
-| BP_AVATAR_THUMB_HEIGHT                |               |             |
-| BP_AVATAR_THUMB_WIDTH                 |               |             |
-| BP_AVATAR_UPLOAD_PATH                 |               |             |
-| BP_AVATAR_URL                         |               |             |
-| BP_DEFAULT_COMPONENT                  |               |             |
-| BP_DISABLE_AUTO_GROUP_JOIN            |               |             |
-| BP_EMBED_DISABLE_ACTIVITY             |               |             |
-| BP_EMBED_DISABLE_ACTIVITY_REPLIES     |               |             |
-| BP_EMBED_DISABLE_PRIVATE_MESSAGES     |               |             |
-| BP_ENABLE_MULTIBLOG                   |               |             |
-| BP_ENABLE_ROOT_PROFILES               |               |             |
-| BP_ENABLE_USERNAME_COMPATIBILITY_MODE |               |             |
-| BP_FORUMS_PARENT_FORUM_ID             |               |             |
-| BP_FORUMS_SLUG                        |               |             |
-| BP_GROUPS_DEFAULT_EXTENSION           |               |             |
-| BP_IGNORE_DEPRECATED                  | undefined     | Setting the value to **true** (**enabled**) will  prohibit the loading of any/all deprecated functions. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow the loading of any/all deprecated functions depending on the value of the **`BP_LOAD_DEPRECATED`** Constant. |
-| BP_LOAD_DEPRECATED                    | undefined     | Setting the value to **true** (**enabled**) will  allow the loading of all deprecated functions, given that the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow for the loading of the last 2 versions of deprecated functions, if and only if the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**.  |
-| BP_MEMBERS_REQUIRED_PASSWORD_STRENGTH |               |             |
-| BP_MESSAGES_AUTOCOMPLETE_ALL          |               |             |
-| BP_PLUGIN_DIR                         |               |             |
-| BP_PLUGIN_URL                         |               |             |
-| BP_ROOT_BLOG                          |               |             |
-| BP_SEARCH_SLUG                        |               |             |
-| BP_SHOW_AVATARS                       |               |             |
+| BP_AVATAR_DEFAULT                     | undefined |             |
+| BP_AVATAR_DEFAULT_THUMB               | undefined     |             |
+| BP_AVATAR_FULL_HEIGHT                 | 150 (pixels) |             |
+| BP_AVATAR_FULL_WIDTH                  | 150 (pixels) |             |
+| BP_AVATAR_ORIGINAL_MAX_FILESIZE       | 5120000 (bits)  |             |
+| BP_AVATAR_ORIGINAL_MAX_WIDTH          | 450 (pixels) |             |
+| BP_AVATAR_THUMB_HEIGHT                | 50 (pixels) |             |
+| BP_AVATAR_THUMB_WIDTH                 | 50 (pixels) |             |
+| BP_AVATAR_UPLOAD_PATH                 | The filesystem directory path for Avatar uploads |             |
+| BP_AVATAR_URL                         | The URL directory path for Avatar uploads |             |
+| BP_DEFAULT_COMPONENT                  | undefined |             |
+| BP_DISABLE_AUTO_GROUP_JOIN            | undefined |             |
+| BP_EMBED_DISABLE_ACTIVITY             | undefined |             |
+| BP_EMBED_DISABLE_ACTIVITY_REPLIES     | undefined |             |
+| BP_EMBED_DISABLE_PRIVATE_MESSAGES     | undefined |             |
+| BP_ENABLE_MULTIBLOG                   | undefined |             |
+| BP_ENABLE_ROOT_PROFILES               | undefined |             |
+| BP_ENABLE_USERNAME_COMPATIBILITY_MODE | undefined |             |
+| BP_FORUMS_PARENT_FORUM_ID             | 1 (integer) |             |
+| BP_FORUMS_SLUG                        | forums (string) |             |
+| BP_GROUPS_DEFAULT_EXTENSION           | undefined |             |
+| BP_IGNORE_DEPRECATED                  | undefined     |Setting the value to **true** (**enabled**) will  prohibit the loading of any/all deprecated functions. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow the loading of any/all deprecated functions depending on the value of the **`BP_LOAD_DEPRECATED`** Constant.  |
+| BP_LOAD_DEPRECATED                    | undefined     |Setting the value to **true** (**enabled**) will  allow the loading of all deprecated functions, given that the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**. Leaving the value **undefined** (**disabled**) or setting the value to **false** (**disabled**) will allow for the loading of the last 2 versions of deprecated functions, if and only if the **`BP_IGNORE_DEPRECATED`** Constant is **disabled**.   |
+| BP_MEMBERS_REQUIRED_PASSWORD_STRENGTH | undefined |             |
+| BP_MESSAGES_AUTOCOMPLETE_ALL          | undefined |             |
+| BP_PLUGIN_DIR                         |The filesystem directory path (with trailing slash) for the BuddyPress plugin |             |
+| BP_PLUGIN_URL                         | The URL directory path (with trailing slash) for the BuddyPress plugin |             |
+| BP_ROOT_BLOG                          | 1 (integer) |             |
+| BP_SEARCH_SLUG                        | search (string) |             |
+| BP_SHOW_AVATARS                       | 1 (integer) |             |
 
 ### Core or Development
 > [!CAUTION]
