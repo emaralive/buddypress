@@ -33,7 +33,7 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_EMBED_DISABLE_ACTIVITY_REPLIES     | undefined |             |
 | BP_EMBED_DISABLE_PRIVATE_MESSAGES     | undefined |             |
 | BP_ENABLE_MULTIBLOG                   | undefined |Setting the value to **`true`** (**Enabled**), BuddyPress content will be generated on all sites of a multisite network. **Restate this -> *This kind of configuration is discouraged, unless you know what you're doing!***|
-| BP_ENABLE_ROOT_PROFILES               | undefined |Setting this value to **`true`** (**Enabled**), The BP Members component slug won't be included into the Member's profile URL (e.g. : `site.url/username/` instead of  `site.url/members/username/`.|
+| BP_ENABLE_ROOT_PROFILES               | undefined |Setting the value to **`true`** (**Enabled**), will exclude the BP Members component slug won't be included into the Member's profile URL (e.g. : `site.url/username/` instead of  `site.url/members/username/`.|
 | BP_ENABLE_USERNAME_COMPATIBILITY_MODE | undefined |             |
 | BP_FORUMS_PARENT_FORUM_ID             | 1 (integer) |             |
 | BP_FORUMS_SLUG                        | forums (string) |             |
