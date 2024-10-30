@@ -44,7 +44,7 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_MESSAGES_AUTOCOMPLETE_ALL          | undefined |             |
 | BP_PLUGIN_DIR                         |The&nbsp;filesystem&nbsp;directory&nbsp;path (with trailing slash) for the BuddyPress plugin |             |
 | BP_PLUGIN_URL                         | The&nbsp;URL&nbsp;directory&nbsp;path (with trailing slash) for the BuddyPress plugin |             |
-| BP_ROOT_BLOG                          | 1 (integer) |             |
+| BP_ROOT_BLOG                          | 1 (integer) |The Site/Blog ID of the multisite network BuddyPress content will be generated|
 | BP_SEARCH_SLUG                        | search (string) |             |
 | BP_SHOW_AVATARS                       | 1 (integer) |             |
 
