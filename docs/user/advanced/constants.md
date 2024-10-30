@@ -27,7 +27,7 @@ These constants are avaiable to alter the behavior or where and how parts of Bud
 | BP_AVATAR_THUMB_WIDTH                 | 50 (pixels) |             |
 | BP_AVATAR_UPLOAD_PATH                 | The&nbsp;filesystem&nbsp;directory&nbsp;path for Avatar uploads |             |
 | BP_AVATAR_URL                         | The&nbsp;URL&nbsp;directory&nbsp;path for Avatar uploads |             |
-| BP_DEFAULT_COMPONENT                  | undefined |             |
+| BP_DEFAULT_COMPONENT                  | undefined |By default (**undefined**) BuddyPress loads the Member's activity page when displaying the Member's landing page (`site.url/members/username/`). Setting the value to another component’s ID (e.g.: `'profile'`) will show the member's corresponding component specific page instead.|
 | BP_DISABLE_AUTO_GROUP_JOIN            | undefined |             |
 | BP_EMBED_DISABLE_ACTIVITY             | undefined |             |
 | BP_EMBED_DISABLE_ACTIVITY_REPLIES     | undefined |             |
