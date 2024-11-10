@@ -7,7 +7,7 @@
  * information from those blogs to make querying blogs in bulk more performant.
  *
  * @package BuddyPress
- * @subpackage BlogsCore
+ * @subpackage Blogs
  * @since 1.5.0
  */
 
@@ -30,7 +30,7 @@ class BP_Blogs_Component extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'blogs',
-			__( 'Site Directory', 'buddypress' ),
+			'Site Directory',
 			buddypress()->plugin_dir,
 			array(
 				'adminbar_myaccount_order' => 30,

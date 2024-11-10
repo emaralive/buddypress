@@ -5,7 +5,7 @@
  * A private messages component, for users to send messages to each other.
  *
  * @package BuddyPress
- * @subpackage MessagesClasses
+ * @subpackage Messages
  * @since 1.5.0
  */
 
@@ -37,7 +37,7 @@ class BP_Messages_Component extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'messages',
-			__( 'Private Messages', 'buddypress' ),
+			'Private Messages',
 			buddypress()->plugin_dir,
 			array(
 				'adminbar_myaccount_order' => 50,

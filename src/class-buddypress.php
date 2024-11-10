@@ -727,6 +727,7 @@ class BuddyPress {
 			'BP_Invitation'                    => 'core',
 			'BP_REST_Attachments'              => 'core',
 			'BP_Admin_Types'                   => 'core',
+			'BP_LoggedIn_User'                 => 'core',
 			'BP_Optout'                        => 'core',
 			'BP_Optouts_List_Table'            => 'core',
 			'BP_Group_Extension'               => 'groups',
@@ -896,7 +897,7 @@ class BuddyPress {
 		bp_register_theme_package(
 			array(
 				'id'      => 'legacy',
-				'name'    => __( 'BuddyPress Legacy', 'buddypress' ),
+				'name'    => 'BP Legacy',
 				'version' => bp_get_version(),
 				'dir'     => trailingslashit( $this->themes_dir . '/bp-legacy' ),
 				'url'     => trailingslashit( $this->themes_url . '/bp-legacy' ),
@@ -906,7 +907,7 @@ class BuddyPress {
 		bp_register_theme_package(
 			array(
 				'id'      => 'nouveau',
-				'name'    => __( 'BuddyPress Nouveau', 'buddypress' ),
+				'name'    => 'BP Nouveau',
 				'version' => bp_get_version(),
 				'dir'     => trailingslashit( $this->themes_dir . '/bp-nouveau' ),
 				'url'     => trailingslashit( $this->themes_url . '/bp-nouveau' ),

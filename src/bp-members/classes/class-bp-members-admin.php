@@ -3,7 +3,7 @@
  * BuddyPress Members Admin
  *
  * @package BuddyPress
- * @subpackage MembersAdmin
+ * @subpackage Members
  * @since 2.0.0
  */
 
@@ -238,7 +238,7 @@ class BP_Members_Admin {
 		$this->js_url    = trailingslashit( $this->admin_url . 'js'  ); // Admin CSS URL.
 
 		// Capability depends on config.
-		$this->capability = bp_core_do_network_admin() ? 'manage_network_users' : 'edit_users';
+		$this->capability = 'bp_manage_users_and_membership_requests';
 
 		// The Show Profile Screen id.
 		$this->user_profile = is_network_admin() ? 'users' : 'profile';

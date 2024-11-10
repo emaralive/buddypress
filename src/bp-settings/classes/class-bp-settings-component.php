@@ -3,7 +3,7 @@
  * BuddyPress Settings Loader.
  *
  * @package BuddyPress
- * @subpackage SettingsLoader
+ * @subpackage Settings
  * @since 1.5.0
  */
 
@@ -26,7 +26,7 @@ class BP_Settings_Component extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'settings',
-			__( 'Settings', 'buddypress' ),
+			'Settings',
 			buddypress()->plugin_dir,
 			array(
 				'adminbar_myaccount_order' => 100,

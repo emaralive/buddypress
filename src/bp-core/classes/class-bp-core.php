@@ -28,7 +28,7 @@ class BP_Core extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'core',
-			__( 'BuddyPress Core', 'buddypress' ),
+			'BuddyPress Core',
 			buddypress()->plugin_dir
 		);
 
@@ -235,12 +235,8 @@ class BP_Core extends BP_Component {
 		/** Basic current user data ******************************************
 		 */
 
-		// Logged in user is the 'current_user'.
-		$current_user = wp_get_current_user();
-
-		// The user ID of the user who is currently logged in.
-		$bp->loggedin_user     = new stdClass();
-		$bp->loggedin_user->id = isset( $current_user->ID ) ? $current_user->ID : 0;
+		// The user who is currently logged in.
+		$bp->loggedin_user = new BP_LoggedIn_User();
 
 		/** Avatars **********************************************************
 		 */

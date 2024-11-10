@@ -3,7 +3,7 @@
  * BuddyPress Capabilities.
  *
  * @package BuddyPress
- * @subpackage Capabilities
+ * @subpackage Core
  * @since 1.6.0
  */
 
@@ -150,6 +150,9 @@ function bp_map_meta_caps( $caps, $cap, $user_id, $args ) {
 					$caps = array( 'do_not_allow' );
 				}
 			}
+			break;
+		case 'bp_manage_users_and_membership_requests' :
+			$caps = bp_core_do_network_admin() ? array( 'manage_network_users' ) : array( 'edit_users' );
 			break;
 	}
 

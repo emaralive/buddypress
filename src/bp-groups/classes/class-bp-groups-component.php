@@ -3,7 +3,7 @@
  * BuddyPress Groups Component Class.
  *
  * @package BuddyPress
- * @subpackage GroupsLoader
+ * @subpackage Groups
  * @since 1.5.0
  */
 
@@ -117,7 +117,7 @@ class BP_Groups_Component extends BP_Component {
 
 		parent::start(
 			'groups',
-			_x( 'User Groups', 'Group screen page <title>', 'buddypress' ),
+			'User Groups',
 			buddypress()->plugin_dir,
 			array(
 				'adminbar_myaccount_order' => 70,

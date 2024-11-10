@@ -5,7 +5,7 @@
  * An activity stream component, for users, groups, and site tracking.
  *
  * @package BuddyPress
- * @subpackage ActivityCore
+ * @subpackage Activity
  * @since 1.5.0
  */
 
@@ -28,7 +28,7 @@ class BP_Activity_Component extends BP_Component {
 	public function __construct() {
 		parent::start(
 			'activity',
-			__( 'Activity Streams', 'buddypress' ),
+			'Activity Streams',
 			buddypress()->plugin_dir,
 			array(
 				'adminbar_myaccount_order' => 10,
